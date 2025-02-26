@@ -1,0 +1,130 @@
+.dtlogo {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.dtlogo > img {
+    width: 10%;
+}
+
+:root {
+    --r-main-font: 'BerninaSans',"Source Sans Pro", Helvetica, sans-serif     
+}
+
+@font-face {
+    font-family: 'BerninaSans';
+    src: url('../fonts/BerninaSans-Web-Regular.woff');
+}
+@font-face {
+    font-family: 'BerninaSans';
+    font-weight: bold;
+    src: url('../fonts/BerninaSans-Web-Semibold.woff');
+}
+@font-face {
+    font-family: 'BerninaSans';
+    font-weight: 800;
+    src: url('../fonts/BerninaSans-Web-Extrabold.woff');
+}
+@font-face {
+    font-family: 'BerninaSans';
+    font-weight: lighter;
+    src: url('../fonts/BerninaSans-Web-Light.woff');
+}
+
+
+.reveal section.title,
+.reveal .slide-background.title {
+    background-color: #1496FF;
+}
+
+.imageblock + .title {
+    font-size: 0.3em;
+}
+.line-through {
+    text-decoration: line-through 
+}
+
+.line-through p {
+    text-decoration: line-through 
+}
+
+.reveal .progress {
+    color: #1496FF;
+    height: 10px;
+}
+
+.navigate-left {
+    color: #1496FF !important;
+    opacity: 0.9 !important;
+}
+.navigate-right {
+    color: #73BE28 !important;
+    opacity: 0.9 !important;
+}
+.navigate-up {
+    color: #B4DC00 !important;
+    opacity: 0.9 !important;
+}
+.navigate-down {
+    color: #6F2DA8 !important;
+    opacity: 0.9 !important;
+}
+
+.cncf img {
+    width: 30%;
+    background: none !important;
+    border: none !important;
+}
+
+.reveal a {
+    color: white;
+    text-decoration: underline;
+}
+
+.reveal section img {
+    border: 0;
+}
+
+#_intro img {
+    border: 4px solid #fff; 
+}
+
+.social {
+    list-style: none;
+    font-size: 0.5em
+}
+.reveal .social p {
+    margin: 0;
+}
+
+.small img {
+    width: 25%;
+}
+
+.big img {
+    width: 125%;
+}
+
+.openFeature img {
+    box-shadow: none !important;
+    background: none !important;
+}
+
+.print-pdf h1 {
+    color: #000000 !important;
+}
+
+.print-pdf h2 {
+    color: #000000 !important;
+}
+
+.print-pdf h3 {
+    color: #000000 !important;
+}
+
+@media print {
+    h1 {
+        color: #000000 !important;
+    }
+}

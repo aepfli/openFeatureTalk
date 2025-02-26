@@ -1,0 +1,808 @@
+= Fun with Flags
+Simon Schrottner <s.schrottner@gmail.com>
+2021-11-04
+:example-caption!:
+ifndef::imagesdir[:imagesdir: img]
+:customcss: css/code.css
+:revealjs_history: true
+:revealjs_fragmentInURL: true
+:toc: macro
+:toc-title:
+:toclevels: 1
+:docinfo: shared
+:title-slide-background-image: images/backgrounds/background-presentation.png
+:revealjsdir: revealjs
+:icons: font
+:revealjs_pdfmaxpagesperslide: 1
+:revealjs_pdfseparatefragments: false
+:source-highlighter: highlight.js
+:highlightjsdir: ./highlightjs/src
+:highlightjs-theme: ./css/a11y-dark.css
+:highlightjs-languages: asciidoc, java, json, golang, javascript
+Bring the Fun Back into Feature Flagging with OpenFeature 
+[%notitle]
+[.columns]
+[background-color="#6F2DA8"]
+[transition=fade-out,slide-int]
+== Intro
+[.column]
+--
+[discrete]
+=== Simon Schrottner
+
+* Senior Software Engineer @ Dynatrace
+* Approver/Member of https://openfeature.dev/[OpenFeature]
+* Open Source Enthusiast
+
+[.social]
+mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatrace.com
+[.social]
+https://mastodon.social/@aepfli[icon:mastodon[]]: @aepfli@mastodon.social
+[.social]
+https://www.linkedin.com/in/simon-schrottner/[icon:linkedin[]]: simon-schrottner
+[.social]
+https://twitter.com/aepfli[icon:twitter[]] https://github.com/aepfli[icon:github[]]: @aepfli
+
+--
+
+
+[.column.is-one-third]
+--
+[.thumb]
+image::simon.jpg[caption="",title="© haraldtauderer.com"]
+--
+
+[background-color="#73BE28"]
+== Agenda
+
+. What are Feature Flags?
+. Open Feature
+. Feature Flagging Pitfalls
+. (Demo)
+
+[background-color="#B4DC00"]
+== Feature Flags
+
+[%notitle]
+=== what are feature flags?
+
+Feature Flags enable, disable or change the behavior of certain features or code paths in a product or service, without modifying the source code.
+
+[.notes]
+--
+* Env vars
+* config flags
+--
+
+=== Why?
+
+* Coordinate
+* Reduce Risk
+* Experiment
+
+=== How?
+
+* Decouple release from deployment
+* Risk-averse releases
+* A/B testing
+* Progressive rollouts
+
+=== Categories of Feature Flags
+
+* differ in longevity and dynamism
+* different needs
+
+[%notitle]
+=== Categories of Feature Flags
+--
+image::fowler-ff-types.png[link="https://martinfowler.com/articles/feature-toggles.html", caption="https://martinfowler.com/articles/feature-toggles.html", title=" - Pete Hodgson's Feature Flag Types"]
+--
+
+[background-color="#1496FF"]
+[%notitle]
+[.openFeature]
+== What is OpenFeature?
+
+[.big]
+--
+image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+--
+
+Standardizing Feature Flagging for Everyone
+
+[.small]
+--
+image::cncf-incubating-white.svg[link="https://www.cncf.io",caption="", title="",size="small"]
+--
+
+[.social]
+https://openfeature.dev
+
+[%notitle]
+=== Description
+
+OpenFeature is an [.step.highlight-red]#open specification# that provides a [.step.highlight-red]#vendor-agnostic, community-driven API for feature flagging# that works with your favorite feature flag management tool.
+footnote:[https://openfeature.dev/docs/reference/intro]
+
+
+=== Flow
+--
+image::flow.svg[link="https://openfeature.dev/specification/sections/providers#overview", caption="",title="",background="none"]
+--
+
+// [mermaid, theme="neutral", background="000000"]
+// ----
+// flowchart LR
+//     A[Application] --> API(Evaluation API)
+//     API --> P[Provider]
+//     P --> FMS[(Flag Management System)]
+// ----
+// footnote:[https://openfeature.dev/specification/sections/providers#overview]
+
+
+[transition=slide-in,fade-out]
+=== basic usage - java
+
+[source, java, highlight="1,2|4|6-7" step=0]
+----
+OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new InMemoryProvider(myFlags));
+
+Client client = api.getClient();
+
+boolean flagValue = 
+    client.getBooleanValue("v2_enabled", false);
+----
+footnote:[https://openfeature.dev/docs/reference/technologies/server/java]
+
+[transition=fade-in,fade-out]
+=== basic usage - node.js
+
+[source, javascript, highlight]
+----
+import { OpenFeature } from '@openfeature/server-sdk';
+await OpenFeature.setProviderAndWait(new YourProviderOfChoice());
+
+const client = OpenFeature.getClient();
+
+const v2Enabled = 
+    await client.getBooleanValue('v2_enabled', false);
+----
+footnote:[https://openfeature.dev/docs/reference/technologies/server/javascript]
+
+
+[transition=fade-in,slide-out]
+=== basic usage - golang
+
+[source, golang]
+----
+
+openfeature.SetProvider(openfeature.NoopProvider{})
+
+client := openfeature.NewClient()
+
+v2Enabled, _ := client.BooleanValue(
+    context.Background(), 
+    "v2_enabled", 
+    true, 
+    openfeature.EvaluationContext{},
+)
+----
+footnote:[https://openfeature.dev/docs/reference/technologies/server/go]
+
+=== Considerations
+
+* never breaks your code
+* good default values
+
+[transition=slide-in,fade-out]
+=== Supported Types - boolean
+
+[source, java]
+----
+client.getBooleanValue("v2_enabled", false);
+----
+
+[transition=fade-in,fade-out]
+=== Supported Types - string
+
+[source, java]
+----
+client.getStringValue("v2_enabled", "fallback");
+----
+
+[transition=fade-in,fade-out]
+=== Supported Types - number
+
+[source, java]
+----
+client.getIntegerValue("v2_enabled", 0);
+client.getDoubleValue("v2_enabled", 0d);
+----
+
+[transition=fade-in,slide-out]
+=== Supported Types - object
+
+[source, java]
+----
+client.getObjectValue("v2_enabled", new Value());
+----
+
+
+[background-color="#1496FF"]
+=== Evaluation API
+
+The Evaluation API is the primary component of OpenFeature that application authors interact with. 
+The Evaluation API allows developers to evaluate feature flags to alter control flow and application characteristics.
+footnote:[https://openfeature.dev/docs/reference/concepts/evaluation-api]
+
+
+[background-color="#1496FF"]
+=== Evaluation API
+
+* Easy to use API
+* Available in multiple Languages
+
+[.notes]
+--
+* take a sipp
+--
+
+[background-color="#6F2DA8"]
+== Problems with Feature Flags
+
+=== Feature Flagging iceberg
+
+--
+image::feature-flagging-iceberg.png[link="https://openfeature.dev/blog/openfeature-a-standard-for-feature-flagging/#the-feature-flagging-iceberg", caption="https://openfeature.dev/blog/openfeature-a-standard-for-feature-flagging",title=""]
+--
+
+=== Topics we will cover
+
+* Vendor lock ins
+* Dynamic Evaluation
+* Obsolote Feature Flags
+
+[.notes]
+--
+* take a sipp
+--
+
+[background-color="#73BE28"]
+== Lock ins
+
+=== Why?
+
+* Vendor specific SDKs
+* Homegrown solutions
+
+[.notes]
+--
+* talk about adventure of first feature flagging solution
+* homegrown
+* vendors
+--
+
+=== Problems?
+
+* Migration pain
+* Limited Features
+
+=== Architecture
+
+--
+image::architecture.png[link="https://openfeature.dev/docs/reference/intro#what-is-openfeature", caption="",title="OpenFeature Provider Architecture"]
+--
+
+[.notes]
+--
+* take time to explain surface
+* and the benefit of the provider abstraction
+--
+
+
+[transition=slide-in,fade-out]
+=== Example
+
+[source, java, highlight="2" step=0]
+----
+OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new InMemoryProvider(myFlags));
+
+Client client = api.getClient();
+
+boolean flagValue = client.getBooleanValue("v2_enabled", false);
+----
+
+[transition=fade-in,slide-out]
+=== Example
+
+[source, java, highlight="2" ]
+----
+OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new NewProvider());
+
+Client client = api.getClient();
+
+boolean flagValue = client.getBooleanValue("v2_enabled", false);
+----
+
+// === ... but still ...
+
+// ... a lot of pain to migrate now!
+
+// === Multiple sources?
+// [source, java, highlight="3,6,9"]
+// ----
+// OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+// api.setProviderAndWait(new InMemoryProvider(myFlags));
+// api.setProviderAndWait("domain", new DomainProvider());
+
+// Client client = api.getClient();
+// Client domainClient = api.getClient("domain");
+
+// boolean flagValue = client.getBooleanValue("v2_enabled", false);
+// boolean domainValue = domainClient.getBooleanValue("v2_enabled", false);
+// ----
+
+[background-color="#73BE28"]
+=== Providersfootnote:[https://openfeature.dev/docs/reference/concepts/provider]
+
+* Encapsulate feature flag management tool
+* Reduces migration pains
+
+[background-color="#B4DC00"]
+== Dynamic Evaluation
+
+[.notes]
+--
+* talk about Example of SDGQ testing in production
+--
+
+[%notitle]
+=== what?
+
+Changing evaluation based on rulesets.
+
+=== Why?
+
+* SDQA
+* premium users
+* A/B testing
+* dogfooding
+
+=== FlagD - Targeting Example
+
+[source, json, highlight ]
+----
+{
+    "if": [
+        {
+        "ends_with": [
+            {
+            "var": "email"
+            },
+            "@ingen.com"
+        ]
+        },
+        "true"
+    ]
+}
+----
+
+
+=== Dynamic Context
+
+[source, java, highlight="1-5|6-7|9-10" step=0 ]
+----
+Map<String, Value> requestAttrs = new HashMap<>();
+requestAttrs.put("email", 
+    new Value(session.getAttribute("email")));
+requestAttrs.put("product", 
+    new Value("productId"));
+EvaluationContext reqCtx = 
+    new ImmutableContext(requestAttrs);
+
+boolean flagValue = 
+    client.getBooleanValue("v2_enabled", false, reqCtx);
+----
+
+[%notitle]
+=== what?
+
+Changing evaluation based on rulesets for other use-cases?
+
+=== Operational Information
+
+* Application information
+* Hyperscalers
+* Operating Systems
+* Environmental information
+
+=== Static Context
+
+[source, java, highlight="1-4|5-9" step=0 ]
+----
+OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+api.setEvaluationContext(
+    new MutableContext().add(
+        "myGlobalKey", "myGlobalValue"));
+
+Client client = api.getClient();
+client.setEvaluationContext(
+    new MutableContext().add(
+        "myClientKey", "myClientValue"));
+----
+
+[.notes]
+--
+* take a sipp
+--
+=== Merge Order
+--
+image::mergeorder.svg[link="https://openfeature.dev/specification/sections/evaluation-context#requirement-323",caption="",title="",background="none"]
+--
+// [mermaid, theme="neutral", background="000000"]
+// ----
+// flowchart LR
+//     global("API (global)")
+//     transaction("Transaction")
+//     client("Client")
+//     invocation("Invocation")
+//     hook("Before Hooks")
+//     global --> transaction
+//     transaction --> client
+//     client --> invocation
+//     invocation --> hook
+// ----
+// footnote:[https://openfeature.dev/specification/sections/evaluation-context#requirement-323]
+
+=== Determinism Problem
+
+* fractional Evaluations
+* percentage-based Evaluations
+* ensure same Result for User
+
+=== Targeting Key
+
+* ensure determinism
+* unique subject identifier
+* optional for evaluation context
+
+footnote:[https://openfeature.dev/docs/reference/concepts/evaluation-context#targeting-key]
+
+=== Targeting Key - Example
+
+[source, java]
+----
+String targetingKey = session.getId();
+EvaluationContext reqCtx = 
+    new ImmutableContext(targetingKey, requestAttrs);
+----
+
+[background-color="#B4DC00"]
+=== Evaluation Contextfootnote:[https://openfeature.dev/docs/reference/concepts/evaluation-context]
+
+The evaluation context is a container for arbitrary contextual data that can be used as a basis for dynamic evaluation.
+
+
+[background-color="#B4DC00"]
+=== Evaluation Context
+
+* Experiment
+* Reduce impact
+* Increase Flexibility
+* Provide Determinism
+
+[.notes]
+--
+* take a sipp
+--
+
+[background-color="#1496FF"]
+== Obsolete Feature Flags
+
+[%notitle]
+=== what?
+
+Feature Flags that only evaluate to the same value anymore.
+
+=== Why?
+
+* Dead code
+* Technical debt
+* Increased complexity
+
+=== Decommissioning
+
+* Remove outdated features
+* Remove obsolete behaviour
+* Remove complexity
+
+=== ...but when is it safe?
+
+=== Flag Evaluation Life-Cycle
+--
+image::evallifecycle.svg[link="https://openfeature.dev/specification/sections/hooks#overview",caption="",title="",background="none"]
+--
+// [mermaid, theme="neutral", background="000000"]
+// ----
+// flowchart LR
+//     B("'Before' stage")
+//     FE["Flag Evaluation"]
+//     E("'Error' stage")
+//     A("'After' stage")
+//     F("'Finally' stage")
+//     B ---> FE
+//     B -..-> |"Error"| E
+//     FE ---> A
+//     FE -..-> |"Error"| E
+//     A ---> F
+//     E -..-> F
+// ----
+// footnote:[https://openfeature.dev/specification/sections/hooks#overview]
+
+[transition=slide-in,fade-out]
+=== Implementation - dynamic
+
+[source, java]
+----
+Boolean value = client.getBooleanValue(
+    "key", 
+    false, 
+    null, 
+    FlagEvaluationOptions
+        .builder()
+        .hook(new ExampleInvocationHook())
+        .build()
+    );
+----
+
+[transition=fade-in,fade-out]
+=== Implementation - client
+
+[source, java]
+----
+Client client = api.getClient();
+client.addHooks(new ExampleClientHook());
+----
+
+
+[transition=fade-in,slide-out]
+=== Implementation - global
+
+[source, java]
+----
+OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
+----
+
+[.notes]
+--
+* take a sipp
+--
+=== OpenTelemetry
+
+* Traces
+* Metrics
+* https://github.com/open-feature/java-sdk-contrib/tree/main/hooks/open-telemetry
+
+=== Traces
+
+* After and Error stage
+* Evaluation Details:
+** Key
+** Provider name
+** Variant
+
+=== Metrics
+
+* Number of evaluation requests
+* Successful flag evaluations
+* Errornous flag evaluations
+* Active flag evaluations counter
+
+
+=== Other use-cases?
+
+* Logging
+* Validation
+* Enhancing context
+
+[background-color="#1496FF"]
+=== Hooksfootnote:[https://openfeature.dev/docs/reference/concepts/hooks]
+
+Hooks are a mechanism that allow for the addition of arbitrary behavior at well-defined points of the flag evaluation life-cycle. 
+
+=== Hooks
+
+* OpenTelemetry out of the box
+* Enhance existing providers
+
+[.notes]
+--
+* take a sipp
+--
+
+// [background-color="#6F2DA8"]
+// == Non request based Evaluations
+
+// === Use cases?
+
+// [.step]
+// * UI rerendering
+// * Changing loglevels
+// * Application behaviour is influenced without a request.
+
+// === React to Provider State Changes
+
+// [.step]
+// * Ready
+// * Error
+// * Stale
+// * Configuration Changed
+
+// === Event handling
+
+// [source, java]
+// ----
+// Client client = OpenFeatureAPI.getInstance().getClient();
+// client.onProviderConfigurationChanged((EventDetails eventDetails) -> {
+//     // do something when the provider's flag settings change
+// });
+
+// OpenFeatureAPI.getInstance().onProviderStale((EventDetails eventDetails) -> {
+//     // do something when the provider's cache goes stale
+// });
+// ----
+
+// === Eventsfootnote:[https://openfeature.dev/docs/reference/concepts/events]
+
+// Events allow consumers (application integrator, application author, integration author) to react to state changes in the provider or underlying flag management system, such as flag definition changes, provider readiness, or error conditions.
+
+
+// [background-color="#73BE28"]
+// == Impact analysis
+
+// === Are there improvements?
+
+// * Increase of conversion rate
+// * Reoccuring usage
+
+// === New specification
+
+// * Implementation into SDKs started
+// * Depends on provider
+
+
+// [transition=slide-in,fade-out]
+// === Example
+
+// [source, java]
+// ----
+// client.track(
+//     "visited-promo-page", 
+//     evaluationContext
+//     );
+// ----
+
+// [transition=fade-in,fade-out]
+// === Example with Details
+
+// [source, java]
+// ----
+// client.track(
+//     "clicked-checkout", 
+//     evaluationContext, 
+//     new TrackingEventDetails(99.77)
+//     );
+// ----
+
+// [transition=fade-in,slide-out]
+// === Example with extended Details
+
+// [source, java]
+// ----
+// client.track(
+//     "clicked-checkout", 
+//     evaluationContext, 
+//     new TrackingEventDetails(99.77)
+//         .add("currencyCode", "USD")
+//     );
+// ----
+
+// [background-color="#73BE28"]
+// === Trackingfootnote:[https://openfeature.dev/specification/sections/tracking]
+
+// The tracking API enables the association of feature flag evaluations with subsequent actions or application states, in order to facilitate experimentation and analysis of the impact of feature flags on business objectives
+
+[background-color="#B4DC00"]
+== Take aways
+
+[background-color="#B4DC00"]
+[%notitle]
+[.openFeature]
+[transition=slide-in,fade-out]
+=== Many Concepts
+
+[.big]
+--
+image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+--
+
+==== Many Concepts
+
+// [background-color="#B4DC00"]
+// [%notitle]
+// [.openFeature]
+// [transition=fade-in,fade-out]
+// === Easy to use and migrate
+// [.big]
+// --
+// image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+// --
+
+// ==== Easy to use and migrate
+
+
+
+[background-color="#B4DC00"]
+[%notitle]
+[.openFeature]
+[transition=fade-in,fade-out]
+=== Supports _Everyone_ within the SDLC
+[.big]
+--
+image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+--
+
+==== Supports _Everyone_ within the 
+==== Software Delivery Life-Cycle
+
+[background-color="#B4DC00"]
+[%notitle]
+[.openFeature]
+[transition=fade-in,fade-out]
+=== Brings confidence to _Everyone_!
+[.big]
+--
+image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+--
+
+==== Brings confidence to _Everyone_!
+
+
+[background-color="#6F2DA8"]
+[%notitle]
+[.openFeature]
+[transition=fade-in,slide-out]
+== OpenFeature!
+
+[.big]
+--
+image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+--
+
+[.social]
+https://openfeature.dev
+
+[background-color="#6F2DA8"]
+== Q&A
+. What are Feature Flags?
+. Open Feature
+. Concepts
+. (Demo)
+
+
+
+[.social]
+mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatrace.com
+[.social]
+https://mastodon.social/@aepfli[icon:mastodon[]]: @aepfli@mastodon.social
+[.social]
+https://www.linkedin.com/in/simon-schrottner/[icon:linkedin[]]: simon-schrottner
+[.social]
+https://twitter.com/aepfli[icon:twitter[]] https://github.com/aepfli[icon:github[]]: @aepfli
+
+
+[background-color="#B4DC00"]
+== Demo
