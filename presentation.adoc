@@ -1,5 +1,5 @@
 = Fun with Flags
-Simon Schrottner <s.schrottner@gmail.com>
+Simon Schrottner 
 2021-11-04
 :example-caption!:
 ifndef::imagesdir[:imagesdir: img]
@@ -16,10 +16,17 @@ ifndef::imagesdir[:imagesdir: img]
 :revealjs_pdfmaxpagesperslide: 1
 :revealjs_pdfseparatefragments: false
 :source-highlighter: highlight.js
-:highlightjsdir: ./highlightjs/src
-:highlightjs-theme: ./css/a11y-dark.css
-:highlightjs-languages: asciidoc, java, json, golang, javascript
+:source-highlighter: highlight.js
+:highlightjsdir: ./highlightjs
+:highlightjs-theme: ./highlightjs/styles/a11y-dark.css
+:highlightjs-languages: asciidoc, java, json, golang, javascript, go
 Bring the Fun Back into Feature Flagging with OpenFeature 
+
+[.social]
+mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatrace.com
+[.social]
+https://www.linkedin.com/in/aepfli/[icon:linkedin[]] https://github.com/aepfli[icon:github[]] https://bsky.app/profile/aepfli.bsky.social[icon:bluesky[brands]] https://mastodon.social/@aepfli[icon:mastodon[brands]]: @aepfli(...)
+
 [%notitle]
 [.columns]
 [background-color="#6F2DA8"]
@@ -31,18 +38,13 @@ Bring the Fun Back into Feature Flagging with OpenFeature
 === Simon Schrottner
 
 * Senior Software Engineer @ Dynatrace
-* Approver/Member of https://openfeature.dev/[OpenFeature]
+* https://openfeature.dev/[OpenFeature] maintainer
 * Open Source Enthusiast
 
 [.social]
 mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatrace.com
 [.social]
-https://mastodon.social/@aepfli[icon:mastodon[]]: @aepfli@mastodon.social
-[.social]
-https://www.linkedin.com/in/simon-schrottner/[icon:linkedin[]]: simon-schrottner
-[.social]
-https://twitter.com/aepfli[icon:twitter[]] https://github.com/aepfli[icon:github[]]: @aepfli
-
+https://www.linkedin.com/in/aepfli/[icon:linkedin[]] https://github.com/aepfli[icon:github[]] https://bsky.app/profile/aepfli.bsky.social[icon:bluesky[brands]] https://mastodon.social/@aepfli[icon:mastodon[brands]]: @aepfli(...)
 --
 
 
@@ -66,7 +68,7 @@ image::simon.jpg[caption="",title="© haraldtauderer.com"]
 [%notitle]
 === what are feature flags?
 
-Feature Flags enable, disable or change the behavior of certain features or code paths in a product or service, without modifying the source code.
+Feature Flags [.step.highlight-green]#enable, disable or change the behavior# of certain features or code paths in a product or service, [.step.highlight-green]#without modifying the source code.#
 
 [.notes]
 --
@@ -76,15 +78,16 @@ Feature Flags enable, disable or change the behavior of certain features or code
 
 === Why?
 
-* Coordinate
-* Reduce Risk
-* Experiment
+=== Coordinate And Target
 
-=== How?
+* Synchronized rollouts
+* Experiments
+* Usergroup specific features
 
-* Decouple release from deployment
+=== Reduce Risk
+
+* Deployment != Release
 * Risk-averse releases
-* A/B testing
 * Progressive rollouts
 
 === Categories of Feature Flags
@@ -241,7 +244,8 @@ footnote:[https://openfeature.dev/docs/reference/concepts/evaluation-api]
 === Evaluation API
 
 * Easy to use API
-* Available in multiple Languages
+* Multiple Languages
+* Similar Interfaces
 
 [.notes]
 --
@@ -273,8 +277,8 @@ image::feature-flagging-iceberg.png[link="https://openfeature.dev/blog/openfeatu
 
 === Why?
 
-* Vendor specific SDKs
 * Homegrown solutions
+* Vendor specific SDKs
 
 [.notes]
 --
@@ -283,10 +287,16 @@ image::feature-flagging-iceberg.png[link="https://openfeature.dev/blog/openfeatu
 * vendors
 --
 
-=== Problems?
+=== Homegrown Solution
 
-* Migration pain
-* Limited Features
+- High Effort
+- Limited functionality
+- Hard to support additional technologies
+
+=== Vendors
+
+- Specific SDK 
+- Migration pain
 
 === Architecture
 
@@ -366,29 +376,41 @@ Changing evaluation based on rulesets.
 
 === Why?
 
+* A/B testing
 * SDQA
 * premium users
-* A/B testing
 * dogfooding
 
 === FlagD - Targeting Example
 
-[source, json, highlight ]
+[source, json, highlight="3|5-8|10-19" step=0]
 ----
 {
-    "if": [
-        {
-        "ends_with": [
-            {
-            "var": "email"
-            },
-            "@ingen.com"
+  "flags": {
+    "v2_enabled": {
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off",
+      "targeting": { 
+        "if": [
+          {
+            "ends_with": [
+              { "var": "email" }, "@domain.com"
+            ]
+          },
+          "on",
+          "off"
         ]
-        },
-        "true"
-    ]
+      }
+    }
+  }
 }
 ----
+[.social]
+a simple flag config with targeting
 
 
 === Dynamic Context
@@ -408,7 +430,7 @@ boolean flagValue =
 ----
 
 [%notitle]
-=== what?
+=== What if ...?
 
 Changing evaluation based on rulesets for other use-cases?
 
@@ -483,7 +505,7 @@ EvaluationContext reqCtx =
 [background-color="#B4DC00"]
 === Evaluation Contextfootnote:[https://openfeature.dev/docs/reference/concepts/evaluation-context]
 
-The evaluation context is a container for arbitrary contextual data that can be used as a basis for dynamic evaluation.
+The evaluation context is a [.step.highlight-red]#container for arbitrary contextual data# that can be used as a basis for [.step.highlight-red]#dynamic evaluation.#
 
 
 [background-color="#B4DC00"]
@@ -789,19 +811,15 @@ https://openfeature.dev
 == Q&A
 . What are Feature Flags?
 . Open Feature
-. Concepts
+. Providers
+. Dynamic Evaluations
+. Hooks
 . (Demo)
-
-
 
 [.social]
 mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatrace.com
 [.social]
-https://mastodon.social/@aepfli[icon:mastodon[]]: @aepfli@mastodon.social
-[.social]
-https://www.linkedin.com/in/simon-schrottner/[icon:linkedin[]]: simon-schrottner
-[.social]
-https://twitter.com/aepfli[icon:twitter[]] https://github.com/aepfli[icon:github[]]: @aepfli
+https://www.linkedin.com/in/aepfli/[icon:linkedin[]] https://github.com/aepfli[icon:github[]] https://bsky.app/profile/aepfli.bsky.social[icon:bluesky[brands]] https://mastodon.social/@aepfli[icon:mastodon[brands]]: @aepfli(...)
 
 
 [background-color="#B4DC00"]

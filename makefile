@@ -8,5 +8,7 @@ revealjs:
 build: revealjs
 	${DOCKER_CMD} asciidoctor-revealjs ${ASCIIDOC_PARAMS} presentation.adoc
 
+
 serve: build
-	docker run --name my-nginx -p 8080:80 -v $(CURDIR)/presentation.html:/usr/share/nginx/html/index.html:ro -d nginx
+	docker run -p 8080:80 -v $(CURDIR):/usr/share/nginx/html/:ro  nginx
+	
