@@ -101,6 +101,11 @@ Feature Flags [.step.highlight-green]#enable, disable or change the behavior# of
 image::fowler-ff-types.png[link="https://martinfowler.com/articles/feature-toggles.html", caption="https://martinfowler.com/articles/feature-toggles.html", title=" - Pete Hodgson's Feature Flag Types"]
 --
 
+=== Maturity Model
+--
+image::maturity-model-cropped.svg[]
+--
+
 [background-color="#1496FF"]
 [%notitle]
 [.openFeature]
@@ -120,6 +125,25 @@ image::cncf-incubating-white.svg[link="https://www.cncf.io",caption="", title=""
 
 [.social]
 https://openfeature.dev
+
+=== History
+
+- Initialized by Dynatrace
+- KubeCon Valencia 2022
+- Collaborative Effort
+
+=== Reasoning
+
+- Observability
+- Insights
+- Internal Pains
+
+=== Internal Pains
+
+- little granularity (off/on per tenant)
+- baked into binary; can be overwritten at runtime
+- inability to target specific users, run experiments, or do progressive roll-outs
+- Java-only solution (really no support for the frontend, or other backend languages)
 
 [%notitle]
 === Description
@@ -246,6 +270,12 @@ footnote:[https://openfeature.dev/docs/reference/concepts/evaluation-api]
 * Easy to use API
 * Multiple Languages
 * Similar Interfaces
+
+=== Ecosystem
+
+- https://openfeature.dev/ecosystem
+- ~15 SDKs
+- ~130 Providers (18 Java)
 
 [.notes]
 --
@@ -479,15 +509,18 @@ image::mergeorder.svg[link="https://openfeature.dev/specification/sections/evalu
 // ----
 // footnote:[https://openfeature.dev/specification/sections/evaluation-context#requirement-323]
 
-=== Determinism Problem
+=== Special Targeting cases
 
-* fractional Evaluations
-* percentage-based Evaluations
-* ensure same Result for User
+* Fractional Evaluations
+* Percentage-based Evaluations
+
+=== Deterministic problem
+
+* Ensure same Result for User
+* Flacky behavior
 
 === Targeting Key
 
-* ensure determinism
 * unique subject identifier
 * optional for evaluation context
 
@@ -534,6 +567,20 @@ Feature Flags that only evaluate to the same value anymore.
 * Dead code
 * Technical debt
 * Increased complexity
+
+=== Dynatrace Insights
+
+[%step]
+😯 2247 flags 
+
+[%step]
+775 not evaluated in last 6 months 😳
+
+[%step]
+😭 1184 not evaluated in 2 years
+
+[%step]
+oldest from 2018 💀
 
 === Decommissioning
 
@@ -635,6 +682,7 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 Hooks are a mechanism that allow for the addition of arbitrary behavior at well-defined points of the flag evaluation life-cycle. 
 
+[background-color="#1496FF"]
 === Hooks
 
 * OpenTelemetry out of the box
@@ -807,6 +855,29 @@ image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption=
 [.social]
 https://openfeature.dev
 
+[.social]
+https://cloud-native.slack.com/archives/C0344AANLA1[icon:slack[]] https://github.com/open-feature[icon:github[]] 
+
+
+[background-color="#6F2DA8"]
+== Further Information
+
+- https://openfeature.dev[Official Documentation]
+
+- https://flagd.dev[Flagd - Cloud Native Reference Implementation]
+
+- https://flagd.dev/playground[Playground for targeting rules]
+
+- https://github.com/aepfli/Fun-With-Flags-Demo-Java[Java Spring Boot Demo]
+
+[%notitle]
+=== Further Information
+
+[.qr]
+--
+image::qr-code(1).svg[]
+--
+
 [background-color="#6F2DA8"]
 == Q&A
 . What are Feature Flags?
@@ -814,7 +885,6 @@ https://openfeature.dev
 . Providers
 . Dynamic Evaluations
 . Hooks
-. (Demo)
 
 [.social]
 mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatrace.com
@@ -822,5 +892,157 @@ mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatra
 https://www.linkedin.com/in/aepfli/[icon:linkedin[]] https://github.com/aepfli[icon:github[]] https://bsky.app/profile/aepfli.bsky.social[icon:bluesky[brands]] https://mastodon.social/@aepfli[icon:mastodon[brands]]: @aepfli(...)
 
 
+== Adoption
+
+=== Who is _Everyone_?
+
+- Increasing
+- OpenFeature-Compliance requested by Companies
+
+=== Adopters
+
+- Dynatrace
+- Otto GmbH
+- Ebay
+- Ford
+- Spotify
+- Google
+- Octopusdeploy
+- ...
+
+== Internal Adoption
+
+=== Architecture Overview
+
+                                     ┌─────────┐ 
+                                     │ flag    │ 
+                                     │ mgmt UI │ 
+                                     │         │ 
+ ┌─────────┐                         │         │ 
+ │ UI      │                         │         │ 
+ │ workloads                         └────┬────┘ 
+ │         |────OFREP────┐                │      
+ │         │             │                │      
+ │         │             ▼                ▼      
+ └─────────┘          ┌─────────┐    ┌─────────┐ 
+                    ┌─┴───────┐ │    │flag db  │ 
+                    │flagd    │ │    ├─────────┤ 
+                    │         │ │◄───┤         │ 
+                    │         │ │    ├─────────┤ 
+ ┌─────────┐        │         │ │    │         │ 
+ │ Backend │        │         ├─┘    └─────────┘ 
+ │ workloads        └────┬────┘                  
+ │         │             │                       
+ │         │◄─sync.proto─┘                       
+ │         │                                     
+ └─────────┘        
+
+=== What went well
+
+- Our initial research and efforts to understand the existing system paid off; our MVP covered the basic use-cases and did so in a more user-friendly way.
+- Our UI was well-received and has been a key factor in the adoption of our solution.
+
+=== What went well
+
+- We "pre-seeded" some standard context attributes for teams
+- "Dynatrace-flavoured" OpenSource components
+- Flexible migration through __Provider__ concept
+
+=== What went well
+
+- Our evaluation response times are very fast (~20ms web evaluation, <1ms service evaluation)
+
+[.notes]
+-- 
+- Our initial research was successful, especially the UI.
+- We pre-seeded some attributes most teams used into the evaluation context for all evaluations (tenant, cloud-provider, UI app identifier, service/app version) to make it very easy for users to write robust targeting rules without having thought of them beforehand; basically, all our applications and services get these values for free with every flag evaluation without writing any code, through some injected headers and Spring request filters, etc.
+--
+
+=== What surprised us
+
+[%step]
+- Our adoption rate was initially slow but then picked up quickly...[.step]#maybe too quickly.#
+- We were surprised by the number of flags and projects that were created in a short amount of time (80 dev teams, and 100s of flags since August).
+- We didn't anticipate some use cases...
+
+=== Unexpected use-cases
+
+[%step]
+synchronized roll-outs ⌚
+
+[%step]
+💼 object flags
+
+[%step]
+server-side lambdas ➰
+
+[%step]
+🐘 large numbers
+
+[%notitle]
+=== Think about the unexpected!
+
+> Think about the unexpected!
+
+=== Overall Feedback
+
+- Devs: Easy to adopt, simple, love it
+- SRE: Advocating for the solution
+- Bottlenecked for production changes (SRE-only)
+- Processes slowly adopting
+
 [background-color="#B4DC00"]
-== Demo
+== CLI
+
+=== Fighting common pitfalls
+
+- brittle API
+- possible inconsistencies
+
+=== Brittle API - example
+
+[source, java, highlight="1|3|5" step=0]
+----
+client.getBooleanValue("v2_enabled", false);
+// typo in keys
+client.getBooleanValue("v2_enbld", false);
+// different fallbacks
+client.getBooleanValue("v2_enabled", true);
+----
+
+=== Easy fixes
+
+- Abstraction
+- Constants
+- ...
+
+=== ... but we want to be the wrapper!!!
+
+=== CLI to the rescue
+
+generating code based on a manifest*
+
+*still experimental
+
+=== Manifest
+
+[source, json]
+----
+{
+  "$schema": "https://raw.githubusercontent.com/open-feature/cli/refs/heads/main/schema/v0/flag-manifest.json",
+  "flags": {
+    "<name>": {
+      "flagType": "<type>",
+      "defaultValue": "<value>",
+      "description": "<description>"
+    }
+  }
+}
+----
+
+=== Execution
+
+[source, shell]
+----
+openfeature generate <language>
+----

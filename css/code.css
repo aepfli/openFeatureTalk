@@ -105,6 +105,9 @@
 .big img {
     width: 125%;
 }
+.qr img {
+    width: 50%;
+}
 
 .openFeature img {
     box-shadow: none !important;
