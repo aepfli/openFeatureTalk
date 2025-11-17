@@ -27,13 +27,27 @@ mailto:simon.schrottner@dynatrace.com[icon:envelope[]]: simon.schrottner@dynatra
 [.social]
 https://www.linkedin.com/in/aepfli/[icon:linkedin[]] https://github.com/aepfli[icon:github[]] https://bsky.app/profile/aepfli.bsky.social[icon:bluesky[brands]] https://mastodon.social/@aepfli[icon:mastodon[brands]]: @aepfli(...)
 
-== Knight Capital Group
+== How not to do Feature Flags
+
+based on Knight Capital Group
 
 [%notitle]
-=== Image KCG
---
-image::knight_capital.webp[link="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec", caption="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec", title="Statsig about Knight Capital Group"]
---
+[background-image="knight_capital.webp", background-size="cover", background-position="center"]
+=== Image KCG 1
+[%notitle]
+[.kcg]
+[background-image="knight_capital.webp", background-size="cover", background-position="center"]
+=== Image KCG 2
+
+[.step]
+* Lost half a billion USD
+* ... in one hour
+* ... due to a Feature Flag
+* ... they repurposed!
+
+
+[.social]
+https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec
 
 [background-color="#1496FF"]
 == Fun With Flags
@@ -74,7 +88,6 @@ image::simon.jpg[caption="",title="© haraldtauderer.com"]
 . What are Feature Flags?
 . Open Feature
 . Feature Flagging Pitfalls
-. (Demo)
 
 [background-color="#B4DC00"]
 == Feature Flags
@@ -234,7 +247,7 @@ footnote:[https://openfeature.dev/docs/reference/technologies/server/go]
 === Considerations
 
 * never breaks your code
-* good default values
+* good fallback/default values
 
 [transition=slide-in,fade-out]
 === Supported Types - boolean
@@ -297,6 +310,7 @@ footnote:[https://openfeature.dev/docs/reference/concepts/evaluation-api]
 --
 
 [background-color="#6F2DA8"]
+[.step]
 == Problems with Feature Flags
 
 === Feature Flagging iceberg
@@ -309,7 +323,7 @@ image::feature-flagging-iceberg.png[link="https://openfeature.dev/blog/openfeatu
 
 * Vendor lock ins
 * Dynamic Evaluation
-* Obsolote Feature Flags
+* Obsolete Feature Flags
 
 [.notes]
 --
@@ -368,19 +382,57 @@ Client client = api.getClient();
 boolean flagValue = client.getBooleanValue("v2_enabled", false);
 ----
 
-[transition=fade-in,slide-out]
+[transition=fade-in,fade-out]
 === Example
 
 [source, java, highlight="2" ]
 ----
 OpenFeatureAPI api = OpenFeatureAPI.getInstance();
-api.setProviderAndWait(new NewProvider());
+api.setProviderAndWait(new NewProvider(/* ... */));
 
 Client client = api.getClient();
 
 boolean flagValue = client.getBooleanValue("v2_enabled", false);
 ----
 
+[transition=fade-in,fade-out]
+=== Example
+
+[source, java, highlight="2" ]
+----
+OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new VendorProvider(/* ... */));
+
+Client client = api.getClient();
+
+boolean flagValue = client.getBooleanValue("v2_enabled", false);
+----
+
+[transition=fade-in,fade-out]
+=== Example
+
+[source, java, highlight="2" ]
+----
+OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new LaunchDarklyProvider(/* ... */));
+
+Client client = api.getClient();
+
+boolean flagValue = client.getBooleanValue("v2_enabled", false);
+----
+
+[transition=fade-in,slide-out]
+=== Example
+
+[source, java, highlight="2" ]
+----
+OpenFeatureAPI api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new MultiProvider(/* ... */));
+
+Client client = api.getClient();
+
+boolean flagValue = client.getBooleanValue("v2_enabled", false);
+----
 // === ... but still ...
 
 // ... a lot of pain to migrate now!
@@ -420,10 +472,12 @@ Changing evaluation based on rulesets.
 
 === Why?
 
+[.step]
 * A/B testing
-* SDQA
-* premium users
-* dogfooding
+* Quality Assurance
+* Premium users
+* Dogfooding
+* Compliance
 
 === FlagD - Targeting Example
 
@@ -552,7 +606,7 @@ EvaluationContext reqCtx =
 [background-color="#B4DC00"]
 === Evaluation Contextfootnote:[https://openfeature.dev/docs/reference/concepts/evaluation-context]
 
-The evaluation context is a [.step.highlight-green]#container for arbitrary contextual data# that can be used as a basis for [.step.highlight-green]#dynamic evaluation.#
+The evaluation context is a [.step.highlight-red]#container for arbitrary contextual data# that can be used as a basis for [.step.highlight-red]#dynamic evaluation.#
 
 
 [background-color="#B4DC00"]
@@ -802,6 +856,14 @@ Hooks are a mechanism that allow for the addition of arbitrary behavior at well-
 [background-color="#B4DC00"]
 == Take aways
 
+[.notes]
+-- 
+- OpenFeature is a Community
+- Free to use
+- Eases usages of Feature Flagging, like openTelemetry for observability
+
+--
+
 [background-color="#B4DC00"]
 [%notitle]
 [.openFeature]
@@ -813,7 +875,9 @@ Hooks are a mechanism that allow for the addition of arbitrary behavior at well-
 image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
-==== Already Many Concepts
+==== We Covered Many Concepts
+(Evaluation API, Providers, Evaluation Context, Hooks)
+
 
 // [background-color="#B4DC00"]
 // [%notitle]
@@ -837,7 +901,22 @@ image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption=
 image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
-==== ... more to come!
+==== ... there are more ...
+(Events, Tracking)
+
+[background-color="#B4DC00"]
+[%notitle]
+[.openFeature]
+[transition=fade-in,fade-out]
+=== ... not perfect
+[.big]
+--
+image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+--
+
+==== ... and more to come!
+
+We grow with your problems, share your experiences with the community!
 
 
 [background-color="#B4DC00"]
@@ -885,22 +964,33 @@ https://cloud-native.slack.com/archives/C0344AANLA1[icon:slack[]] https://github
 
 
 [background-color="#6F2DA8"]
-== Further Information
+=== Getting Started
 
-- https://openfeature.dev[Official Documentation]
+[.qrs]
+--
+image::qr-code(1).svg[]
+--
 
-- https://flagd.dev[Flagd - Cloud Native Reference Implementation]
 
-- https://flagd.dev/playground[Playground for targeting rules]
+[.social]
+https://openfeature.dev - Official Documentation
 
-- https://github.com/aepfli/Fun-With-Flags-Demo-Java[Java Spring Boot Demo]
+[.social]
+https://flagd.dev - Cloud Native Reference Implementation
 
-[%notitle]
-=== Further Information
+[.social]
+https://flagd.dev/playground - Playground for targeting rules
+
+
+[.social]
+https://github.com/aepfli/Fun-With-Flags-Demo-Java - Java Spring Boot Demo
+
+[background-color="#6F2DA8"]
+=== Feedback
 
 [.qr]
 --
-image::qr-code(1).svg[]
+image::feedback-devoxxma.png[]
 --
 
 [background-color="#6F2DA8"]

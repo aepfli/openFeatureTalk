@@ -108,6 +108,9 @@
 .qr img {
     width: 50%;
 }
+.qrs img {
+    width: 25%;
+}
 
 .openFeature img {
     box-shadow: none !important;
@@ -130,4 +133,8 @@
     h1 {
         color: #000000 !important;
     }
+}
+
+.reveal section.kcg {
+    background-color: rgba(1,1,1,0.65);
 }
