@@ -34,6 +34,9 @@ based on Knight Capital Group
 [%notitle]
 [background-image="knight_capital.webp", background-size="cover", background-position="center"]
 === Image KCG 1
+--
+image::knight_capital.webp[link="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec", caption="", title="knight capital"]
+--
 [background-image="knight_capital.webp", background-size="cover", background-position="center"]
 [%notitle]
 [.kcg]
@@ -141,14 +144,14 @@ image::maturity-model-cropped.svg[]
 
 [.big]
 --
-image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
 Standardizing Feature Flagging for Everyone
 
 [.small]
 --
-image::cncf-incubating-white.svg[link="https://www.cncf.io",caption="", title="",size="small"]
+image::cncf-incubating-color.svg[link="https://www.cncf.io",caption="", title="",size="small"]
 --
 
 [.social]
@@ -873,7 +876,7 @@ Hooks are a mechanism that allow for the addition of arbitrary behavior at well-
 
 [.big]
 --
-image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
 ==== We Covered Many Concepts
@@ -887,7 +890,7 @@ image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption=
 // === Easy to use and migrate
 // [.big]
 // --
-// image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+// image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 // --
 
 // ==== Easy to use and migrate
@@ -899,7 +902,7 @@ image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption=
 === ... not perfect
 [.big]
 --
-image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
 ==== ... there are more ...
@@ -912,7 +915,7 @@ image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption=
 === ... not perfect
 [.big]
 --
-image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
 ==== ... and more to come!
@@ -927,7 +930,7 @@ We grow with your problems, share your experiences with the community!
 === Supports _Everyone_ within the SDLC
 [.big]
 --
-image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
 ==== Supports _Everyone_ within the 
@@ -940,7 +943,7 @@ image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption=
 === Brings confidence to _Everyone_!
 [.big]
 --
-image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
 ==== Brings confidence to _Everyone_!
@@ -954,7 +957,7 @@ image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption=
 
 [.big]
 --
-image::openfeature-horizontal-white.svg[link="https://openfeature.dev", caption="",title=""]
+image::openfeature-horizontal-black.svg[link="https://openfeature.dev", caption="",title=""]
 --
 
 [.social]
