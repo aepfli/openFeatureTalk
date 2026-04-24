@@ -1269,9 +1269,16 @@ Flags that never change value — or never get evaluated at all.
 - The oldest go back **years**
 - Dead code · technical debt · hidden complexity
 
-<div class="mt-8 p-4 rounded border border-gray-300 text-sm">
-  📺 For concrete numbers from a real organization, see my previous talk:
-  <a href="https://www.youtube.com/watch?v=pvjmPTTyCfc" target="_blank">youtube.com/watch?v=pvjmPTTyCfc</a>
+<div class="text-sm opacity-60 italic mt-6">
+  (my personal record: a "temporary" flag from 2018, still alive today.)
+</div>
+
+<div class="mt-6 p-4 rounded border border-gray-200 text-sm flex items-start gap-3">
+  <carbon:play-outline class="text-xl opacity-70 shrink-0 mt-0.5"/>
+  <div>
+    For concrete numbers from a real organization, see my previous talk:
+    <a href="https://www.youtube.com/watch?v=pvjmPTTyCfc" target="_blank">youtube.com/watch?v=pvjmPTTyCfc</a>
+  </div>
 </div>
 
 ---
