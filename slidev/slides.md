@@ -1,8 +1,8 @@
 ---
 theme: seriph
-title: Fun with Flags
+title: "Fun with Flags: How OpenFeature Solves Your Feature Flag Headaches"
 info: |
-  Bring the Fun Back into Feature Flagging with OpenFeature.
+  Fun with Flags: How OpenFeature Solves Your Feature Flag Headaches.
   Simon Schrottner — OpenFeature maintainer, CNCF Ambassador.
 author: Simon Schrottner
 highlighter: shiki
@@ -21,7 +21,7 @@ layout: section
 
 # Fun with Flags
 
-## Bring the Fun Back into Feature Flagging with OpenFeature
+## How OpenFeature Solves Your Feature Flag Headaches
 
 <div class="pt-8 opacity-90 text-sm space-y-1">
   <div>Simon Schrottner · OpenFeature maintainer · CNCF Ambassador</div>
@@ -68,10 +68,14 @@ layout: default
 
 </v-clicks>
 
-<div class="mt-8 text-xs opacity-70">
-  <a href="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec" target="_blank">
-    statsig.com — how to lose half a billion dollars
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>statsig.com — how to lose half a billion dollars</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">blog.statsig.com</div>
   </a>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec" :width="90" :height="90" :margin="2" />
+  </div>
 </div>
 
 ---
@@ -80,7 +84,7 @@ layout: intro
 
 # Fun with Flags
 
-## Bring the Fun Back into Feature Flagging with OpenFeature
+## How OpenFeature Solves Your Feature Flag Headaches
 
 <div class="pt-8 opacity-90 text-sm space-y-1">
   <div>Simon Schrottner · OpenFeature maintainer · CNCF Ambassador</div>
@@ -238,18 +242,11 @@ Those use-cases aren't all the same kind of flag — they differ in **longevity*
   <img src="/img/fowler-ff-types.png" class="mx-auto" style="max-height: 340px; max-width: 90%; width: auto; height: auto; object-fit: contain;"/>
 </div>
 
-<div class="text-xs text-center opacity-60 mt-2">
-  <a href="https://martinfowler.com/articles/feature-toggles.html" target="_blank">Pete Hodgson — Feature Flag Types (martinfowler.com)</a>
-</div>
-
-<div class="text-sm text-center opacity-70 mt-1">
-  These categories tell us <i>what kinds</i> of flags exist — but how mature is an organisation's usage of them?
-</div>
-
 <div class="abs-br m-6 flex items-end gap-2">
-  <div class="text-xs opacity-60 text-right leading-tight pb-1">
-    Pete Hodgson<br/>Feature Flag Types
-  </div>
+  <a href="https://martinfowler.com/articles/feature-toggles.html" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Pete Hodgson — Feature Flag Types</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">martinfowler.com/articles/feature-toggles.html</div>
+  </a>
   <div class="bg-white p-1 rounded">
     <QRCode data="https://martinfowler.com/articles/feature-toggles.html" :width="90" :height="90" :margin="2" />
   </div>
@@ -263,14 +260,11 @@ layout: two-cols
 
 <div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
 
-<div class="bg-white rounded-lg shadow-sm p-3 flex items-center justify-center mt-3 relative" style="height: 400px;">
-  <img src="/img/maturity-model-cropped.svg" class="mx-auto" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
-  <v-switch unmount at="1" class="absolute inset-0 flex items-center justify-center pointer-events-none">
-    <template #1><img src="/img/maturity-level-1-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
-    <template #2><img src="/img/maturity-level-2-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
-    <template #3><img src="/img/maturity-level-3-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
-    <template #4><img src="/img/maturity-level-4-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
-  </v-switch>
+<div class="bg-white rounded-lg shadow-sm p-3 flex items-center justify-center mt-3" style="height: 400px;">
+  <img
+    :src="$clicks >= 1 && $clicks <= 4 ? `/img/maturity-step-${$clicks}.svg` : '/img/maturity-model-cropped.svg'"
+    style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"
+  />
 </div>
 
 ::right::
@@ -370,14 +364,11 @@ layout: statement
 
 OpenFeature is an **open specification** that provides a **vendor-agnostic, community-driven API** for feature flagging that works with your favorite feature flag management tool.
 
-<div class="text-xs opacity-60 mt-6">
-  <a href="https://openfeature.dev/docs/reference/intro" target="_blank">openfeature.dev/docs/reference/intro</a>
-</div>
-
 <div class="abs-br m-6 flex items-end gap-2">
-  <div class="text-xs text-right leading-tight pb-1 opacity-80">
-    openfeature.dev<br/>reference intro
-  </div>
+  <a href="https://openfeature.dev/docs/reference/intro" target="_blank" class="text-xs opacity-80 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>OpenFeature Specification intro</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/intro</div>
+  </a>
   <div class="bg-white p-1 rounded">
     <QRCode data="https://openfeature.dev/docs/reference/intro" :width="90" :height="90" :margin="2" />
   </div>
@@ -389,7 +380,7 @@ layout: default
 
 # Flow
 
-<div class="max-w-3xl mx-auto mt-12">
+<div class="flex justify-center mt-12">
 
 ```mermaid {theme: 'neutral', scale: 0.7}
 flowchart LR
@@ -402,6 +393,16 @@ flowchart LR
 
 <div class="text-sm opacity-70 text-center mt-8">
   Your code talks to the Evaluation API. The Provider adapts to whichever flag management tool you use.
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://openfeature.dev/specification/sections/providers" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Providers — OpenFeature spec</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/specification/sections/providers</div>
+  </a>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/specification/sections/providers" :width="90" :height="90" :margin="2" />
+  </div>
 </div>
 
 ---
@@ -441,7 +442,21 @@ layout: two-cols
 
 <div v-if="$clicks < 4">
 
-```java {all|1-2|4|6-7}{lines:true}
+````md magic-move {lines:true}
+```java
+// walking through the API step by step
+```
+```java {1-2}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new InMemoryProvider(myFlags));
+```
+```java {4}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new InMemoryProvider(myFlags));
+
+var client = api.getClient();
+```
+```java {6-7}
 var api = OpenFeatureAPI.getInstance();
 api.setProviderAndWait(new InMemoryProvider(myFlags));
 
@@ -450,6 +465,7 @@ var client = api.getClient();
 boolean on = client.getBooleanValue(
     "v2_enabled", false);
 ```
+````
 
 </div>
 
@@ -497,41 +513,100 @@ on, _ := client.BooleanValue(
 
 # Supported Types
 
-<div class="grid grid-cols-5 gap-4 mt-10">
+<div class="text-center text-lg opacity-75 mb-8">Four core types in the spec. Language specifics differ.</div>
 
-  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
-    <carbon:boolean class="text-4xl opacity-70"/>
-    <div class="font-bold">Boolean</div>
-    <code class="text-xs opacity-75">getBooleanValue(key, false)</code>
-  </div>
+<div class="grid grid-cols-4 gap-6 items-stretch">
 
-  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
-    <carbon:string-text class="text-4xl opacity-70"/>
-    <div class="font-bold">String</div>
-    <code class="text-xs opacity-75">getStringValue(key, "fallback")</code>
-  </div>
+<v-click at="1">
+<div class="rounded-lg border border-gray-200 shadow-sm p-5 flex flex-col items-center gap-3 h-full text-center">
+  <carbon:boolean class="text-5xl opacity-70"/>
+  <div class="font-bold text-lg">Boolean</div>
+  <div class="text-xs opacity-70">true / false — the bread-and-butter flag</div>
+</div>
+</v-click>
 
-  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
-    <carbon:number-1 class="text-4xl opacity-70"/>
-    <div class="font-bold">Integer</div>
-    <code class="text-xs opacity-75">getIntegerValue(key, 0)</code>
-  </div>
+<v-click at="2">
+<div class="rounded-lg border border-gray-200 shadow-sm p-5 flex flex-col items-center gap-3 h-full text-center">
+  <carbon:string-text class="text-5xl opacity-70"/>
+  <div class="font-bold text-lg">String</div>
+  <div class="text-xs opacity-70">variant names, region codes, labels</div>
+</div>
+</v-click>
 
-  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
-    <carbon:letter-dd class="text-4xl opacity-70"/>
-    <div class="font-bold">Double</div>
-    <code class="text-xs opacity-75">getDoubleValue(key, 0d)</code>
+<v-click at="3">
+<div class="rounded-lg border border-gray-200 shadow-sm p-5 flex flex-col items-center gap-3 h-full text-center">
+  <carbon:number-0 class="text-5xl opacity-70"/>
+  <div class="font-bold text-lg">Number</div>
+  <div class="text-xs opacity-70 leading-snug">
+    Java: <code>int</code> + <code>double</code><br/>
+    Go / Python: <code>int</code> + <code>float</code><br/>
+    JS: one <code>number</code>
   </div>
+</div>
+</v-click>
 
-  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
-    <carbon:data-structured class="text-4xl opacity-70"/>
-    <div class="font-bold">Object</div>
-    <code class="text-xs opacity-75">getObjectValue(key, new Value())</code>
-  </div>
+<v-click at="4">
+<div class="rounded-lg border border-gray-200 shadow-sm p-5 flex flex-col items-center gap-3 h-full text-center">
+  <carbon:data-structured class="text-5xl opacity-70"/>
+  <div class="font-bold text-lg">Object</div>
+  <div class="text-xs opacity-70">structured JSON-like values</div>
+</div>
+</v-click>
 
 </div>
 
-<div class="text-center mt-10 text-lg opacity-75">One call shape. Five return types.</div>
+<div class="text-xs opacity-60 text-center mt-8 italic">
+  The method name reflects the return type — e.g. <code>getBooleanValue</code>, <code>getStringValue</code>, <code>getNumberValue</code>, <code>getObjectValue</code>.
+</div>
+
+---
+layout: default
+---
+
+# The default is mandatory
+
+<div class="text-sm opacity-70 -mt-2 mb-6">Every evaluation call takes a fallback — the SDK always returns <em>something</em>.</div>
+
+```java
+boolean on = client.getBooleanValue("v2_enabled", false);
+//                                                ^^^^^
+//                                      the fallback — non-optional
+```
+
+<div class="grid grid-cols-2 gap-4 mt-8">
+  <div class="p-4 rounded border border-gray-200 flex items-start gap-3">
+    <carbon:cloud-offline class="text-2xl opacity-70 mt-0.5 shrink-0"/>
+    <div>
+      <div class="font-bold text-sm">Provider unreachable</div>
+      <div class="text-xs opacity-70">Network down, tenant offline → you still get <code>false</code>.</div>
+    </div>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-start gap-3">
+    <carbon:search class="text-2xl opacity-70 mt-0.5 shrink-0"/>
+    <div>
+      <div class="font-bold text-sm">Flag key missing</div>
+      <div class="text-xs opacity-70">Typo, not yet created → fallback wins.</div>
+    </div>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-start gap-3">
+    <carbon:warning class="text-2xl opacity-70 mt-0.5 shrink-0"/>
+    <div>
+      <div class="font-bold text-sm">Type mismatch</div>
+      <div class="text-xs opacity-70">Flag returns a string where a bool was asked → fallback wins.</div>
+    </div>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-start gap-3">
+    <carbon:error class="text-2xl opacity-70 mt-0.5 shrink-0"/>
+    <div>
+      <div class="font-bold text-sm">Evaluation error</div>
+      <div class="text-xs opacity-70">Rule engine throws, hook blows up → fallback wins.</div>
+    </div>
+  </div>
+</div>
+
+<div class="text-sm opacity-80 text-center mt-6">
+  Your code path <b>always</b> has a value to work with.
+</div>
 
 ---
 layout: fact
@@ -539,22 +614,17 @@ layout: fact
 
 # Evaluation API
 
-One API. Many languages. Always a value.
-
-<div class="text-base opacity-70 mt-4">Never breaks your code — defaults are mandatory.</div>
+One API. Many languages. Never breaks your code.
 
 <blockquote class="text-sm opacity-70 italic mt-8 max-w-3xl mx-auto border-l-4 border-gray-300 pl-4 text-left">
   The Evaluation API is the <b>primary component of OpenFeature that application authors interact with</b>. The Evaluation API allows developers to evaluate feature flags to alter control flow and application characteristics.
 </blockquote>
 
-<div class="text-xs opacity-60 mt-6">
-  <a href="https://openfeature.dev/docs/reference/concepts/evaluation-api" target="_blank">openfeature.dev — evaluation API</a>
-</div>
-
 <div class="abs-br m-6 flex items-end gap-2">
-  <div class="text-xs opacity-60 text-right leading-tight pb-1">
-    openfeature.dev<br/>evaluation API
-  </div>
+  <a href="https://openfeature.dev/docs/reference/concepts/evaluation-api" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Evaluation API — concept docs</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/concepts/evaluation-api</div>
+  </a>
   <div class="bg-white p-1 rounded">
     <QRCode data="https://openfeature.dev/docs/reference/concepts/evaluation-api" :width="90" :height="90" :margin="2" />
   </div>
@@ -574,10 +644,16 @@ layout: center
 
 # The Feature-Flagging Iceberg
 
-<img src="/img/feature-flagging-iceberg.png" class="mx-auto max-h-[65vh]"/>
+<img src="/img/feature-flagging-iceberg.png" class="mx-auto" style="max-height: 420px; max-width: 60%; width: auto; height: auto; object-fit: contain;"/>
 
-<div class="text-xs opacity-60 text-center mt-2">
-  <a href="https://openfeature.dev/blog/openfeature-a-standard-for-feature-flagging/#the-feature-flagging-iceberg" target="_blank">openfeature.dev — feature-flagging iceberg</a>
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://openfeature.dev/blog/openfeature-a-standard-for-feature-flagging/#the-feature-flagging-iceberg" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>The Feature-Flagging Iceberg — openfeature.dev</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/blog/openfeature-a-standard-for-feature-flagging</div>
+  </a>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/blog/openfeature-a-standard-for-feature-flagging/#the-feature-flagging-iceberg" :width="90" :height="90" :margin="2" />
+  </div>
 </div>
 
 ---
@@ -586,11 +662,15 @@ layout: two-cols
 
 # At the start, you see…
 
+<div class="text-sm opacity-70 italic -mt-2 mb-4">a glorified conditional</div>
+
 - A boolean toggle
 - `if (flag) { newThing() }`
 - "How hard can it be?"
 
 ::right::
+
+<v-click>
 
 # Later you discover…
 
@@ -604,6 +684,8 @@ layout: two-cols
 <div class="text-sm opacity-70 pt-4">
   We'll focus on <b>three</b> of these in depth.
 </div>
+
+</v-click>
 
 ---
 layout: section
@@ -695,14 +777,11 @@ layout: center
 
 <img src="/img/architecture.png" class="mx-auto max-h-[60vh]"/>
 
-<div class="text-xs text-center opacity-60 mt-2">
-  <a href="https://openfeature.dev/docs/reference/intro#what-is-openfeature" target="_blank">OpenFeature provider architecture</a>
-</div>
-
 <div class="abs-br m-6 flex items-end gap-2">
-  <div class="text-xs opacity-60 text-right leading-tight pb-1">
-    OpenFeature<br/>provider architecture
-  </div>
+  <a href="https://openfeature.dev/docs/reference/intro#what-is-openfeature" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>OpenFeature provider architecture</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/intro#what-is-openfeature</div>
+  </a>
   <div class="bg-white p-1 rounded">
     <QRCode data="https://openfeature.dev/docs/reference/intro#what-is-openfeature" :width="90" :height="90" :margin="2" />
   </div>
@@ -839,20 +918,17 @@ layout: fact
 
 # Providers
 
-Swap vendors without touching call sites.
+Vendor-agnostic · Swap without rewriting · Mix sources when needed.
 
 <blockquote class="text-sm opacity-70 italic mt-8 max-w-3xl mx-auto border-l-4 border-gray-300 pl-4 text-left">
   Providers are responsible for performing flag evaluations. They provide an <b>abstraction between the underlying flag management system and the OpenFeature SDK</b>.
 </blockquote>
 
-<div class="text-xs opacity-60 mt-6">
-  <a href="https://openfeature.dev/docs/reference/concepts/provider" target="_blank">openfeature.dev — providers</a>
-</div>
-
 <div class="abs-br m-6 flex items-end gap-2">
-  <div class="text-xs opacity-60 text-right leading-tight pb-1">
-    openfeature.dev<br/>providers
-  </div>
+  <a href="https://openfeature.dev/docs/reference/concepts/provider" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Providers — concept docs</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/concepts/provider</div>
+  </a>
   <div class="bg-white p-1 rounded">
     <QRCode data="https://openfeature.dev/docs/reference/concepts/provider" :width="90" :height="90" :margin="2" />
   </div>
@@ -933,9 +1009,9 @@ boolean on =
 layout: statement
 ---
 
-What *else* could we target on?
+# What *else* could we target on?
 
-<div class="text-lg opacity-60 mt-6">
+<div class="text-xl opacity-70 mt-8">
   We've just seen user targeting. But the evaluation context can carry anything.
 </div>
 
@@ -1025,24 +1101,85 @@ client.setEvaluationContext(
 ```
 
 ---
-layout: center
+layout: default
 ---
 
 # Merge Order
 
-<img src="/img/mergeorder.svg" class="mx-auto max-h-[55vh]"/>
+<div class="flex justify-center mt-10">
 
-<div class="text-xs opacity-60 text-center mt-2">
-  <a href="https://openfeature.dev/specification/sections/evaluation-context#requirement-323" target="_blank">spec §3.2.3 — evaluation context</a>
+```mermaid {theme: 'neutral', scale: 0.95}
+flowchart LR
+    G["API (global)"] --> T[Transaction]
+    T --> C[Client]
+    C --> I[Invocation]
+    I --> H["Before hooks"]
+```
+
+</div>
+
+<div class="text-sm opacity-70 text-center mt-8">
+  Later stages override earlier ones — your invocation context wins over the global default.
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://openfeature.dev/specification/sections/evaluation-context#requirement-323" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Evaluation context — spec §3.2.3</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/specification/sections/evaluation-context</div>
+  </a>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/specification/sections/evaluation-context#requirement-323" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# Percentage rollouts
+
+<div class="text-sm opacity-70 -mt-2 mb-8">Turn a feature on for <b>10%</b> of users. Next week, <b>50%</b>. Then everyone.</div>
+
+<div class="grid grid-cols-3 gap-6 mt-4">
+  <div class="p-6 rounded-lg border border-gray-200 shadow-sm text-center">
+    <div class="text-5xl font-bold opacity-70">10%</div>
+    <div class="text-sm opacity-70 mt-2">canary cohort</div>
+  </div>
+  <div class="p-6 rounded-lg border border-gray-200 shadow-sm text-center">
+    <div class="text-5xl font-bold opacity-70">50%</div>
+    <div class="text-sm opacity-70 mt-2">controlled rollout</div>
+  </div>
+  <div class="p-6 rounded-lg border border-gray-200 shadow-sm text-center">
+    <div class="text-5xl font-bold opacity-70">100%</div>
+    <div class="text-sm opacity-70 mt-2">general availability</div>
+  </div>
+</div>
+
+<div class="text-sm opacity-70 text-center mt-8">
+  The SDK picks who's in each bucket. But <em>how</em> should it pick?
+</div>
+
+---
+layout: statement
+---
+
+# The determinism problem
+
+<div class="text-xl opacity-70 mt-8 max-w-3xl mx-auto">
+  Pick randomly every evaluation, and the same user flips in and out of the feature on every request.
+  <br/><br/>
+  <b>That's not a rollout — that's chaos.</b>
 </div>
 
 ---
 
 # Targeting Key
 
-- Unique **subject identifier** (user id, session id, …)
-- Makes fractional / percentage evaluations **deterministic**
-- Same user → same result, every time
+<div class="text-sm opacity-70 -mt-2 mb-6">A stable, unique identifier for the subject being evaluated. Gives the SDK something to hash consistently.</div>
+
+- **Subject identifier** — user id, session id, tenant id, device id, …
+- Same key → same bucket, every time
+- Percentage / fractional evaluations become **deterministic**
 
 ```java
 String targetingKey = session.getId();
@@ -1056,14 +1193,20 @@ layout: fact
 
 # Evaluation Context
 
-Dynamic evaluation · Deterministic targeting.
+Dynamic evaluation · Deterministic targeting · Reduce blast radius.
 
 <blockquote class="text-sm opacity-70 italic mt-8 max-w-3xl mx-auto border-l-4 border-gray-300 pl-4 text-left">
   The evaluation context is a <b>container for arbitrary contextual data that can be used as a basis for dynamic evaluation</b>.
 </blockquote>
 
-<div class="text-xs opacity-60 mt-6">
-  <a href="https://openfeature.dev/docs/reference/concepts/evaluation-context" target="_blank">openfeature.dev — evaluation context</a>
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://openfeature.dev/docs/reference/concepts/evaluation-context" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Evaluation Context — concept docs</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/concepts/evaluation-context</div>
+  </a>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/docs/reference/concepts/evaluation-context" :width="90" :height="90" :margin="2" />
+  </div>
 </div>
 
 ---
@@ -1094,9 +1237,11 @@ Flags that never change value — or never get evaluated at all.
 layout: statement
 ---
 
-When is it safe to remove a flag?
+# When is it safe to remove a flag?
 
-We have to **observe** flag evaluations.
+<div class="text-xl opacity-70 mt-8">
+  We have to <b>observe</b> flag evaluations.
+</div>
 
 ---
 layout: center
@@ -1134,48 +1279,106 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 # Hooks + OpenTelemetry = observability for free
 
-<div class="grid grid-cols-2 gap-6 mt-6">
+<div class="text-sm opacity-70 -mt-2 mb-6">
+  Drop the SDK-contrib OpenTelemetry hook in — every evaluation emits signals that follow the OTel semantic convention.
+</div>
 
-<div>
+<div class="grid grid-cols-2 gap-6">
 
-**Traces**
-- After + error stages
-- Details: key, provider, variant
+<div class="p-5 rounded-lg border border-gray-200 flex flex-col gap-2">
+
+**🔭 Traces**
+
+- Span event per evaluation, attached to the current span
+- Flag key, provider, and chosen variant
+- Error details on failure
 
 </div>
 
-<div>
+<div class="p-5 rounded-lg border border-gray-200 flex flex-col gap-2">
 
-**Metrics**
-- Evaluation requests
+**📊 Metrics**
+
+- Total evaluation calls
 - Success / error counts
-- Active flag counter
+- Active evaluations counter
 
 </div>
 
 </div>
 
-<div class="mt-8 text-sm opacity-70">
-  <a href="https://github.com/open-feature/java-sdk-contrib/tree/main/hooks/open-telemetry" target="_blank">github.com/open-feature/java-sdk-contrib — open-telemetry hook</a>
+<div class="text-sm opacity-70 mt-8">
+  Ready-to-drop-in hooks for Java, Node.js, Go, Python, .NET, … — maintained by the community in <code>open-feature/&lt;lang&gt;-sdk-contrib</code>.
+</div>
+
+<div class="abs-br m-6 flex gap-6 items-end">
+  <a href="https://opentelemetry.io/docs/specs/semconv/feature-flags/" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>OTel semantic convention — feature flags</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">opentelemetry.io/docs/specs/semconv/feature-flags</div>
+  </a>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://opentelemetry.io/docs/specs/semconv/feature-flags/" :width="84" :height="84" :margin="2" />
+  </div>
+  <a href="https://github.com/open-feature/java-sdk-contrib/tree/main/hooks/open-telemetry" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Java SDK-contrib — open-telemetry hook</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">github.com/open-feature/java-sdk-contrib</div>
+  </a>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://github.com/open-feature/java-sdk-contrib/tree/main/hooks/open-telemetry" :width="84" :height="84" :margin="2" />
+  </div>
 </div>
 
 ---
 
 # Other hook use-cases
 
-<div class="grid grid-cols-3 gap-4 mt-8">
-  <div class="p-6 rounded border border-gray-300 text-center">
-    <div class="text-3xl mb-2">📝</div>
-    <div class="font-bold">Logging</div>
+<div class="text-sm opacity-70 -mt-2 mb-8">Observability is the obvious one — but the same extension point solves a surprising amount.</div>
+
+<div class="grid grid-cols-3 gap-5">
+
+<div class="p-5 rounded-lg border border-gray-200 shadow-sm flex flex-col gap-3 h-full">
+  <div class="flex items-center gap-3">
+    <carbon:document class="text-4xl opacity-70"/>
+    <div class="font-bold text-lg">Logging</div>
   </div>
-  <div class="p-6 rounded border border-gray-300 text-center">
-    <div class="text-3xl mb-2">✅</div>
-    <div class="font-bold">Validation</div>
+  <div class="text-sm opacity-80">
+    Capture every evaluation — flag key, returned value, variant, reason — into your log stream.
   </div>
-  <div class="p-6 rounded border border-gray-300 text-center">
-    <div class="text-3xl mb-2">➕</div>
-    <div class="font-bold">Context enhancement</div>
+  <div class="text-xs opacity-60 italic">
+    Useful for: audit trails, debugging "why did this user see X?", SRE post-mortems.
   </div>
+</div>
+
+<div class="p-5 rounded-lg border border-gray-200 shadow-sm flex flex-col gap-3 h-full">
+  <div class="flex items-center gap-3">
+    <carbon:checkmark-outline class="text-4xl opacity-70"/>
+    <div class="font-bold text-lg">Validation</div>
+  </div>
+  <div class="text-sm opacity-80">
+    Reject or normalise flag values before they reach your code — e.g. cap a percentage at 100, ensure an enum value is known.
+  </div>
+  <div class="text-xs opacity-60 italic">
+    Useful for: defensive coding against mis-configured flags.
+  </div>
+</div>
+
+<div class="p-5 rounded-lg border border-gray-200 shadow-sm flex flex-col gap-3 h-full">
+  <div class="flex items-center gap-3">
+    <carbon:add-alt class="text-4xl opacity-70"/>
+    <div class="font-bold text-lg">Context enrichment</div>
+  </div>
+  <div class="text-sm opacity-80">
+    Attach runtime info before evaluation — user's entitlement tier, request id, cloud region — without touching every call site.
+  </div>
+  <div class="text-xs opacity-60 italic">
+    Useful for: making evaluation context rich without polluting business logic.
+  </div>
+</div>
+
+</div>
+
+<div class="text-sm opacity-70 text-center mt-8">
+  Hooks are cross-cutting behaviour for flag evaluation — anywhere you'd reach for middleware in HTTP, reach for a hook here.
 </div>
 
 ---
@@ -1200,35 +1403,83 @@ layout: section
 
 # Take-aways
 
-## Three problems. Three concepts. One standard.
+## Three problems · Four concepts · One standard.
 
 ---
 
 # What we covered
 
-<div class="grid grid-cols-2 gap-6 mt-8">
+<div class="grid grid-cols-2 gap-5 mt-6">
 
-<div class="p-6 rounded border-l-4 border-blue-500">
-  <div class="text-sm opacity-70">Problem</div>
-  <div class="text-xl font-bold">Vendor lock-in</div>
-  <div class="mt-3 text-sm opacity-70">Concept</div>
-  <div class="text-lg">🔌 Providers</div>
+<div class="p-5 rounded border-l-4 border-gray-400">
+  <div class="text-xs uppercase tracking-wider opacity-60">Umbrella</div>
+  <div class="text-lg font-bold">📖 Evaluation API</div>
+  <div class="text-sm opacity-70 mt-1">One shape, many languages — defaults mandatory, so your code never breaks.</div>
 </div>
 
-<div class="p-6 rounded border-l-4 border-purple-500">
-  <div class="text-sm opacity-70">Problem</div>
-  <div class="text-xl font-bold">Dynamic evaluation</div>
-  <div class="mt-3 text-sm opacity-70">Concept</div>
-  <div class="text-lg">🎯 Evaluation Context</div>
+<div class="p-5 rounded border-l-4 border-blue-500">
+  <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
+  <div class="text-lg font-bold">Vendor lock-in</div>
+  <div class="mt-2 text-xs uppercase tracking-wider opacity-60">Concept</div>
+  <div class="text-base">🔌 Providers</div>
 </div>
 
-<div class="p-6 rounded border-l-4 border-green-500 col-span-2">
-  <div class="text-sm opacity-70">Problem</div>
-  <div class="text-xl font-bold">Obsolete flags</div>
-  <div class="mt-3 text-sm opacity-70">Concept</div>
-  <div class="text-lg">🪝 Hooks + OpenTelemetry</div>
+<div class="p-5 rounded border-l-4 border-purple-500">
+  <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
+  <div class="text-lg font-bold">Dynamic evaluation</div>
+  <div class="mt-2 text-xs uppercase tracking-wider opacity-60">Concept</div>
+  <div class="text-base">🎯 Evaluation Context</div>
 </div>
 
+<div class="p-5 rounded border-l-4 border-green-500">
+  <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
+  <div class="text-lg font-bold">Obsolete flags</div>
+  <div class="mt-2 text-xs uppercase tracking-wider opacity-60">Concept</div>
+  <div class="text-base">🪝 Hooks + OpenTelemetry</div>
+</div>
+
+</div>
+
+---
+layout: default
+---
+
+# What we didn't cover
+
+<div class="text-sm opacity-70 -mt-2 mb-6">OpenFeature has more surface than three loops can fit. Two worth naming:</div>
+
+<div class="grid grid-cols-2 gap-6">
+
+<div class="p-5 rounded-lg border border-gray-200 shadow-sm flex flex-col gap-3">
+  <div class="flex items-center gap-3">
+    <carbon:chart-line-smooth class="text-4xl opacity-70"/>
+    <div class="font-bold text-lg">Tracking</div>
+  </div>
+  <div class="text-sm opacity-80">
+    Associate flag evaluations with downstream business events — clicks, conversions, revenue — to close the loop on experiments and impact analysis.
+  </div>
+  <div class="text-xs opacity-60 italic">
+    <code>client.track("checkout_completed", ctx, details)</code>
+  </div>
+</div>
+
+<div class="p-5 rounded-lg border border-gray-200 shadow-sm flex flex-col gap-3">
+  <div class="flex items-center gap-3">
+    <carbon:notification class="text-4xl opacity-70"/>
+    <div class="font-bold text-lg">Events</div>
+  </div>
+  <div class="text-sm opacity-80">
+    React to provider state changes — ready, stale, error, configuration updated — so non-request-driven code (UI, long-running jobs) can re-render or reload on the fly.
+  </div>
+  <div class="text-xs opacity-60 italic">
+    <code>client.onProviderConfigurationChanged(...)</code>
+  </div>
+</div>
+
+</div>
+
+<div class="text-sm opacity-70 text-center mt-6">
+  Both part of the OpenFeature spec — covered in full at <a href="https://openfeature.dev/specification/" target="_blank">openfeature.dev/specification</a>.
 </div>
 
 ---
@@ -1238,6 +1489,104 @@ layout: statement
 <img src="/img/openfeature-horizontal-black.svg" class="mx-auto h-20 mb-8"/>
 
 Brings confidence to *everyone* in the Software Delivery Life-Cycle.
+
+---
+layout: section
+---
+
+# Join us
+
+## OpenFeature grows with your problems — share your experience.
+
+---
+layout: default
+---
+
+# You're in good company
+
+<div class="text-sm opacity-70 -mt-2 mb-6">A sample of public adopters:</div>
+
+<div class="grid grid-cols-3 gap-4 text-gray-700">
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:dynatrace class="text-4xl"/>
+    <span class="font-semibold">Dynatrace</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <span class="font-semibold text-2xl">Otto</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:ebay class="text-4xl"/>
+    <span class="font-semibold">eBay</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:ford class="text-4xl"/>
+    <span class="font-semibold">Ford</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:spotify class="text-4xl"/>
+    <span class="font-semibold">Spotify</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:google class="text-4xl"/>
+    <span class="font-semibold">Google</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:octopusdeploy class="text-4xl"/>
+    <span class="font-semibold">Octopus Deploy</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:bookingdotcom class="text-4xl"/>
+    <span class="font-semibold">Booking.com</span>
+  </div>
+  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
+    <simple-icons:miro class="text-4xl"/>
+    <span class="font-semibold">Miro</span>
+  </div>
+</div>
+
+<div class="text-sm opacity-60 italic text-center mt-6">… and more — maybe you?</div>
+
+---
+layout: image-right
+image: /img/qr-code.svg
+---
+
+# Try it out
+
+- 🌐 [openfeature.dev](https://openfeature.dev)
+- ☁️ [flagd.dev](https://flagd.dev) — cloud-native reference
+- 🛝 [flagd.dev/playground](https://flagd.dev/playground) — targeting rules
+- 📦 [Java Spring Boot demo](https://github.com/aepfli/Fun-With-Flags-Demo-Java)
+- 💬 [CNCF Slack #openfeature](https://cloud-native.slack.com/archives/C0344AANLA1)
+- 🐙 [github.com/open-feature](https://github.com/open-feature)
+
+---
+layout: end
+---
+
+# Thanks — Q&A
+
+Problems: lock-in · dynamic evaluation · obsolete flags
+Concepts: providers · evaluation context · hooks
+
+<div class="mt-10 text-sm opacity-80">
+  <carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
+  <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
+  <carbon:logo-linkedin class="inline"/> in/aepfli
+</div>
+
+---
+layout: section
+---
+
+# Bonus
+## Anything we didn't get to
+
+<div class="text-sm opacity-70 mt-4">If there's time — a quick peek at what we skipped.</div>
+
+---
+layout: default
+---
 
 ---
 layout: statement
@@ -1293,60 +1642,3 @@ openfeature generate <language>
 ```
 
 <div class="text-sm opacity-60 mt-6">Still experimental — feedback welcome.</div>
-
----
-layout: section
----
-
-# Join us
-
-## OpenFeature grows with your problems — share your experience.
-
----
-layout: default
----
-
-# You're in good company
-
-Public adopters include:
-
-<div class="grid grid-cols-3 gap-3 mt-8 text-center text-lg">
-  <div class="p-3 rounded border border-gray-300">Dynatrace</div>
-  <div class="p-3 rounded border border-gray-300">Otto</div>
-  <div class="p-3 rounded border border-gray-300">eBay</div>
-  <div class="p-3 rounded border border-gray-300">Ford</div>
-  <div class="p-3 rounded border border-gray-300">Spotify</div>
-  <div class="p-3 rounded border border-gray-300">Google</div>
-  <div class="p-3 rounded border border-gray-300">Octopus Deploy</div>
-  <div class="p-3 rounded border border-gray-300 opacity-60 italic">… and more</div>
-  <div class="p-3 rounded border border-gray-300 opacity-60 italic">maybe you?</div>
-</div>
-
----
-layout: image-right
-image: /img/qr-code.svg
----
-
-# Try it out
-
-- 🌐 [openfeature.dev](https://openfeature.dev)
-- ☁️ [flagd.dev](https://flagd.dev) — cloud-native reference
-- 🛝 [flagd.dev/playground](https://flagd.dev/playground) — targeting rules
-- 📦 [Java Spring Boot demo](https://github.com/aepfli/Fun-With-Flags-Demo-Java)
-- 💬 [CNCF Slack #openfeature](https://cloud-native.slack.com/archives/C0344AANLA1)
-- 🐙 [github.com/open-feature](https://github.com/open-feature)
-
----
-layout: end
----
-
-# Thanks — Q&A
-
-Problems: lock-in · dynamic evaluation · obsolete flags
-Concepts: providers · evaluation context · hooks
-
-<div class="mt-10 text-sm opacity-80">
-  <carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
-  <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
-  <carbon:logo-linkedin class="inline"/> in/aepfli
-</div>
