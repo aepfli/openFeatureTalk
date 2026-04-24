@@ -73,7 +73,7 @@ layout: default
     <div>statsig.com — how to lose half a billion dollars</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">blog.statsig.com</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec" :width="90" :height="90" :margin="2" />
   </div>
 </div>
@@ -104,11 +104,13 @@ image: /img/simon.jpg
 
 <div class="grid grid-cols-2 gap-4 mt-6">
   <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
-    <img src="/img/openfeature-horizontal-black.svg" class="h-14 object-contain" />
+    <img src="/img/openfeature-horizontal-black.svg" class="h-14 object-contain dark:invert" />
     <div class="text-sm mt-3">OpenFeature Maintainer</div>
   </div>
   <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
-    <img src="/img/cncf-ambassador-color.svg" class="h-14 object-contain" />
+    <div class="dark:bg-white dark:p-2 dark:rounded">
+      <img src="/img/cncf-ambassador-color.svg" class="h-14 object-contain" />
+    </div>
     <div class="text-sm mt-3">CNCF Ambassador</div>
   </div>
 </div>
@@ -144,7 +146,7 @@ layout: default
 
 <div class="rounded-lg border border-gray-200 overflow-hidden shadow-sm flex flex-col h-full">
   <div class="bg-gray-50 p-4 flex items-center justify-center h-40">
-    <img src="/img/openfeature-horizontal-black.svg" class="max-h-full max-w-full object-contain" />
+    <img src="/img/openfeature-horizontal-black.svg" class="max-h-full max-w-full object-contain dark:invert" />
   </div>
   <div class="p-4 flex flex-col gap-1">
     <div class="text-3xl opacity-40 leading-none">2</div>
@@ -247,7 +249,7 @@ Those use-cases aren't all the same kind of flag — they differ in **longevity*
     <div>Pete Hodgson — Feature Flag Types</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">martinfowler.com/articles/feature-toggles.html</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://martinfowler.com/articles/feature-toggles.html" :width="90" :height="90" :margin="2" />
   </div>
 </div>
@@ -260,7 +262,7 @@ layout: two-cols
 
 <div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
 
-<div class="bg-white rounded-lg shadow-sm p-3 flex items-center justify-center mt-3" style="height: 400px;">
+<div class="bg-white dark:bg-transparent rounded-lg shadow-sm dark:shadow-none p-3 flex items-center justify-center mt-3" style="height: 400px;">
   <img
     :src="$clicks >= 1 && $clicks <= 4 ? `/img/maturity-step-${$clicks}.svg` : '/img/maturity-model-cropped.svg'"
     style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"
@@ -297,16 +299,22 @@ layout: two-cols
 </v-switch>
 
 ---
+layout: image
+image: /img/breaks/spring-blossoms.jpg
+---
+
+---
 layout: center
 ---
 
 <span class="sr-only">OpenFeature</span>
 
 <div class="flex flex-col items-center gap-6 mt-4">
-  <img src="/img/openfeature-horizontal-black.svg" class="h-24"/>
+  <img src="/img/openfeature-horizontal-black.svg" class="h-24 dark:invert"/>
   <div class="text-xl opacity-80 text-center max-w-2xl">A vendor-agnostic, community-driven standard for feature flagging</div>
   <div class="flex flex-col items-center gap-1 mt-4">
-    <img src="/img/cncf-incubating-color.svg" class="h-20"/>
+    <img src="/img/cncf-incubating-color.svg" class="h-20 dark:hidden"/>
+    <img src="/img/cncf-incubating-white.svg" class="h-20 hidden dark:block"/>
     <div class="text-xs opacity-60">CNCF Incubating project</div>
   </div>
 </div>
@@ -369,7 +377,7 @@ OpenFeature is an **open specification** that provides a **vendor-agnostic, comm
     <div>OpenFeature Specification intro</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/intro</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/docs/reference/intro" :width="90" :height="90" :margin="2" />
   </div>
 </div>
@@ -400,7 +408,7 @@ flowchart LR
     <div>Providers — OpenFeature spec</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/specification/sections/providers</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/specification/sections/providers" :width="90" :height="90" :margin="2" />
   </div>
 </div>
@@ -625,10 +633,15 @@ One API. Many languages. Never breaks your code.
     <div>Evaluation API — concept docs</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/concepts/evaluation-api</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/docs/reference/concepts/evaluation-api" :width="90" :height="90" :margin="2" />
   </div>
 </div>
+
+---
+layout: image
+image: /img/breaks/mist-mountain.jpg
+---
 
 ---
 layout: section
@@ -651,7 +664,7 @@ layout: center
     <div>The Feature-Flagging Iceberg — openfeature.dev</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/blog/openfeature-a-standard-for-feature-flagging</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/blog/openfeature-a-standard-for-feature-flagging/#the-feature-flagging-iceberg" :width="90" :height="90" :margin="2" />
   </div>
 </div>
@@ -782,7 +795,7 @@ layout: center
     <div>OpenFeature provider architecture</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/intro#what-is-openfeature</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/docs/reference/intro#what-is-openfeature" :width="90" :height="90" :margin="2" />
   </div>
 </div>
@@ -929,10 +942,15 @@ Vendor-agnostic · Swap without rewriting · Mix sources when needed.
     <div>Providers — concept docs</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/concepts/provider</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/docs/reference/concepts/provider" :width="90" :height="90" :margin="2" />
   </div>
 </div>
+
+---
+layout: image
+image: /img/breaks/ruin-archway.jpg
+---
 
 ---
 layout: section
@@ -1127,7 +1145,7 @@ flowchart LR
     <div>Evaluation context — spec §3.2.3</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/specification/sections/evaluation-context</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/specification/sections/evaluation-context#requirement-323" :width="90" :height="90" :margin="2" />
   </div>
 </div>
@@ -1204,10 +1222,15 @@ Dynamic evaluation · Deterministic targeting · Reduce blast radius.
     <div>Evaluation Context — concept docs</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/docs/reference/concepts/evaluation-context</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://openfeature.dev/docs/reference/concepts/evaluation-context" :width="90" :height="90" :margin="2" />
   </div>
 </div>
+
+---
+layout: image
+image: /img/breaks/frost-fence.jpg
+---
 
 ---
 layout: section
@@ -1279,6 +1302,10 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 # Hooks + OpenTelemetry = observability for free
 
+<div class="absolute top-8 right-8 opacity-80">
+  <logos:opentelemetry class="h-8"/>
+</div>
+
 <div class="text-sm opacity-70 -mt-2 mb-6">
   Drop the SDK-contrib OpenTelemetry hook in — every evaluation emits signals that follow the OTel semantic convention.
 </div>
@@ -1316,14 +1343,14 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
     <div>OTel semantic convention — feature flags</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">opentelemetry.io/docs/specs/semconv/feature-flags</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://opentelemetry.io/docs/specs/semconv/feature-flags/" :width="84" :height="84" :margin="2" />
   </div>
   <a href="https://github.com/open-feature/java-sdk-contrib/tree/main/hooks/open-telemetry" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
     <div>Java SDK-contrib — open-telemetry hook</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">github.com/open-feature/java-sdk-contrib</div>
   </a>
-  <div class="bg-white p-1 rounded">
+  <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://github.com/open-feature/java-sdk-contrib/tree/main/hooks/open-telemetry" :width="84" :height="84" :margin="2" />
   </div>
 </div>
@@ -1396,6 +1423,11 @@ Observe, enhance, extend — without forking a provider.
 <div class="text-xs opacity-60 mt-6">
   <a href="https://openfeature.dev/docs/reference/concepts/hooks" target="_blank">openfeature.dev — hooks</a>
 </div>
+
+---
+layout: image
+image: /img/breaks/hiking-forest.jpg
+---
 
 ---
 layout: section
@@ -1486,17 +1518,66 @@ layout: default
 layout: statement
 ---
 
-<img src="/img/openfeature-horizontal-black.svg" class="mx-auto h-20 mb-8"/>
+<img src="/img/openfeature-horizontal-black.svg" class="mx-auto h-20 mb-8 dark:invert"/>
 
 Brings confidence to *everyone* in the Software Delivery Life-Cycle.
 
 ---
-layout: section
+layout: image
+image: /img/breaks/summit-vista.jpg
+---
+
+---
+layout: default
 ---
 
 # Join us
 
-## OpenFeature grows with your problems — share your experience.
+<div class="text-sm opacity-70 -mt-2 mb-8">OpenFeature grows with your problems — share your experience.</div>
+
+<div class="grid grid-cols-2 gap-5">
+
+<a href="https://cloud-native.slack.com/archives/C0344AANLA1" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:logo-slack class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">#openfeature on CNCF Slack</div>
+    <div class="text-sm opacity-70 mt-1">Daily chat with maintainers and users. Best place to ask a question.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">cloud-native.slack.com · #openfeature</div>
+  </div>
+</a>
+
+<a href="https://github.com/open-feature" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:logo-github class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">github.com/open-feature</div>
+    <div class="text-sm opacity-70 mt-1">SDKs, providers, spec, CLI, playground — everything lives here. Issues and PRs welcome.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">github.com/open-feature</div>
+  </div>
+</a>
+
+<a href="https://openfeature.dev/community" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:user-multiple class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">Community page</div>
+    <div class="text-sm opacity-70 mt-1">Contributing guide, working groups, governance, code of conduct.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">openfeature.dev/community</div>
+  </div>
+</a>
+
+<a href="https://openfeature.dev/community/meeting-notes" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:calendar class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">Community meetings</div>
+    <div class="text-sm opacity-70 mt-1">Public weekly calls — bring a question, watch a recording, submit a topic.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">openfeature.dev/community/meeting-notes</div>
+  </div>
+</a>
+
+</div>
+
+<div class="text-sm opacity-70 text-center mt-6 italic">
+  First-time contributors very welcome — the maintainers label good-first-issues on GitHub.
+</div>
 
 ---
 layout: default
@@ -1506,59 +1587,104 @@ layout: default
 
 <div class="text-sm opacity-70 -mt-2 mb-6">A sample of public adopters:</div>
 
-<div class="grid grid-cols-3 gap-4 text-gray-700">
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:dynatrace class="text-4xl"/>
-    <span class="font-semibold">Dynatrace</span>
+<div class="grid grid-cols-5 gap-3">
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/dynatrace.svg" class="h-7 object-contain"/>
+    <span class="font-semibold text-gray-800 text-sm">Dynatrace</span>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <span class="font-semibold text-2xl">Otto</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center h-20">
+    <span class="font-bold text-xl">Otto</span>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:ebay class="text-4xl"/>
-    <span class="font-semibold">eBay</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/ebay-color.svg" class="h-6 object-contain"/>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:ford class="text-4xl"/>
-    <span class="font-semibold">Ford</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/ford-color.svg" class="h-10 object-contain"/>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:spotify class="text-4xl"/>
-    <span class="font-semibold">Spotify</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/spotify-color.svg" class="h-6 object-contain"/>
+    <span class="font-semibold text-gray-800 text-sm">Spotify</span>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:google class="text-4xl"/>
-    <span class="font-semibold">Google</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/google-color.svg" class="h-6 object-contain"/>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:octopusdeploy class="text-4xl"/>
-    <span class="font-semibold">Octopus Deploy</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/datadog-color.svg" class="h-7 object-contain"/>
+    <span class="font-semibold text-gray-800 text-sm">Datadog</span>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:bookingdotcom class="text-4xl"/>
-    <span class="font-semibold">Booking.com</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/octopusdeploy.svg" class="h-7 object-contain"/>
+    <span class="font-semibold text-gray-800 text-sm">Octopus</span>
   </div>
-  <div class="p-4 rounded border border-gray-200 flex items-center justify-center gap-3 h-24">
-    <simple-icons:miro class="text-4xl"/>
-    <span class="font-semibold">Miro</span>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/bookingdotcom.svg" class="h-7 object-contain"/>
+    <span class="font-semibold text-gray-800 text-sm">Booking</span>
+  </div>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/miro.svg" class="h-6 object-contain"/>
+    <span class="font-semibold text-gray-800 text-sm">Miro</span>
   </div>
 </div>
 
 <div class="text-sm opacity-60 italic text-center mt-6">… and more — maybe you?</div>
 
 ---
-layout: image-right
-image: /img/qr-code.svg
+layout: default
 ---
 
 # Try it out
 
-- 🌐 [openfeature.dev](https://openfeature.dev)
-- ☁️ [flagd.dev](https://flagd.dev) — cloud-native reference
-- 🛝 [flagd.dev/playground](https://flagd.dev/playground) — targeting rules
-- 📦 [Java Spring Boot demo](https://github.com/aepfli/Fun-With-Flags-Demo-Java)
-- 💬 [CNCF Slack #openfeature](https://cloud-native.slack.com/archives/C0344AANLA1)
-- 🐙 [github.com/open-feature](https://github.com/open-feature)
+<div class="text-sm opacity-70 -mt-2 mb-8">Four places to start, in order of "how deep do I want to go?"</div>
+
+<div class="grid grid-cols-2 gap-5">
+
+<a href="https://openfeature.dev" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:book class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">openfeature.dev</div>
+    <div class="text-sm opacity-70 mt-1">Start here — docs, SDK quick-starts, provider catalogue.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">openfeature.dev</div>
+  </div>
+</a>
+
+<a href="https://flagd.dev/playground" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:play class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">flagd playground</div>
+    <div class="text-sm opacity-70 mt-1">Targeting rules in the browser — no install, paste JSON, see evaluation results live.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">flagd.dev/playground</div>
+  </div>
+</a>
+
+<a href="https://flagd.dev" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:cloud class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">flagd</div>
+    <div class="text-sm opacity-70 mt-1">Cloud-native reference provider — YAML/JSON flags, OFREP-compatible.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">flagd.dev</div>
+  </div>
+</a>
+
+<a href="https://github.com/aepfli/Fun-With-Flags-Demo-Java" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <carbon:rocket class="text-4xl opacity-70 shrink-0 mt-1"/>
+  <div>
+    <div class="font-bold">Java Spring Boot demo</div>
+    <div class="text-sm opacity-70 mt-1">Clone, run, poke — a working reference using flagd, hooks, and OpenTelemetry.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">github.com/aepfli/Fun-With-Flags-Demo-Java</div>
+  </div>
+</a>
+
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://openfeature.dev" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Start here</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://openfeature.dev" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
 
 ---
 layout: end
@@ -1566,10 +1692,31 @@ layout: end
 
 # Thanks — Q&A
 
-Problems: lock-in · dynamic evaluation · obsolete flags
-Concepts: providers · evaluation context · hooks
+<div class="grid grid-cols-3 gap-6 mt-8 max-w-4xl mx-auto">
+  <div class="text-center">
+    <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
+    <div class="text-lg font-bold mt-1">Vendor lock-in</div>
+    <div class="text-xs opacity-60 mt-3">→</div>
+    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Concept</div>
+    <div class="text-base">Providers</div>
+  </div>
+  <div class="text-center">
+    <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
+    <div class="text-lg font-bold mt-1">Dynamic evaluation</div>
+    <div class="text-xs opacity-60 mt-3">→</div>
+    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Concept</div>
+    <div class="text-base">Evaluation Context</div>
+  </div>
+  <div class="text-center">
+    <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
+    <div class="text-lg font-bold mt-1">Obsolete flags</div>
+    <div class="text-xs opacity-60 mt-3">→</div>
+    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Concept</div>
+    <div class="text-base">Hooks</div>
+  </div>
+</div>
 
-<div class="mt-10 text-sm opacity-80">
+<div class="mt-12 text-sm opacity-80">
   <carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
   <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
   <carbon:logo-linkedin class="inline"/> in/aepfli
