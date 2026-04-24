@@ -1,0 +1,1352 @@
+---
+theme: seriph
+title: Fun with Flags
+info: |
+  Bring the Fun Back into Feature Flagging with OpenFeature.
+  Simon Schrottner — OpenFeature maintainer, CNCF Ambassador.
+author: Simon Schrottner
+highlighter: shiki
+lineNumbers: false
+drawings:
+  persist: false
+transition: slide-left
+mdc: true
+fonts:
+  sans: Inter
+  mono: JetBrains Mono
+addons:
+  - slidev-addon-qrcode
+layout: section
+---
+
+# Fun with Flags
+
+## Bring the Fun Back into Feature Flagging with OpenFeature
+
+<div class="pt-8 opacity-90 text-sm space-y-1">
+  <div>Simon Schrottner · OpenFeature maintainer · CNCF Ambassador</div>
+  <div><carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
+       <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
+       <carbon:logo-linkedin class="inline"/> in/aepfli</div>
+</div>
+
+<!--
+  Narrative rhythm (do not break):
+    Hook (Knight Capital) → Who I am → What are FFs → OpenFeature intro
+    → Loop 1: Problem (Lock-in)        → Concept (Providers)           → Recap
+    → Loop 2: Problem (Dynamic eval)   → Concept (Evaluation Context)  → Recap
+    → Loop 3: Problem (Obsolete flags) → Concept (Hooks)               → Recap
+    → Take-aways (all concepts)
+    → CTA (community + try it)
+-->
+
+---
+layout: section
+---
+
+# How *not* to do Feature Flags
+
+A cautionary tale: Knight Capital Group, August 2012.
+
+---
+layout: image
+image: /img/knight_capital.webp
+---
+
+---
+layout: default
+---
+
+# What happened
+
+<v-clicks>
+
+- Lost **half a billion USD**
+- ... in **one hour**
+- ... due to a **feature flag**
+- ... they **repurposed**
+
+</v-clicks>
+
+<div class="mt-8 text-xs opacity-70">
+  <a href="https://blog.statsig.com/how-to-lose-half-a-billion-dollars-with-bad-feature-flags-ccebb26adeec" target="_blank">
+    statsig.com — how to lose half a billion dollars
+  </a>
+</div>
+
+---
+layout: intro
+---
+
+# Fun with Flags
+
+## Bring the Fun Back into Feature Flagging with OpenFeature
+
+<div class="pt-8 opacity-90 text-sm space-y-1">
+  <div>Simon Schrottner · OpenFeature maintainer · CNCF Ambassador</div>
+  <div><carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
+       <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
+       <carbon:logo-linkedin class="inline"/> in/aepfli</div>
+</div>
+
+---
+layout: image-right
+image: /img/simon.jpg
+---
+
+# Who am I?
+
+**Simon Schrottner**
+
+<div class="grid grid-cols-2 gap-4 mt-6">
+  <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
+    <img src="/img/openfeature-horizontal-black.svg" class="h-14 object-contain" />
+    <div class="text-sm mt-3">OpenFeature Maintainer</div>
+  </div>
+  <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
+    <img src="/img/cncf-ambassador-color.svg" class="h-14 object-contain" />
+    <div class="text-sm mt-3">CNCF Ambassador</div>
+  </div>
+</div>
+
+<div class="pt-4 text-sm opacity-70">Open Source enthusiast</div>
+
+<div class="pt-6 text-xs opacity-70 space-y-1">
+  <div><carbon:email class="inline"/> simon.schrottner@gmail.com</div>
+  <div><carbon:logo-github class="inline"/> aepfli &nbsp; <carbon:logo-linkedin class="inline"/> in/aepfli</div>
+  <div>🦋 @aepfli.bsky.social</div>
+</div>
+
+---
+layout: default
+---
+
+# Agenda
+
+<div class="grid grid-cols-3 gap-8 mt-8 items-stretch">
+
+<v-clicks>
+
+<div class="rounded-lg border border-gray-200 overflow-hidden shadow-sm flex flex-col h-full">
+  <div class="bg-gray-50 p-4 flex items-center justify-center h-40">
+    <img src="/img/fowler-ff-types.png" class="max-h-full max-w-full object-contain" />
+  </div>
+  <div class="p-4 flex flex-col gap-1">
+    <div class="text-3xl opacity-40 leading-none">1</div>
+    <div class="text-lg font-semibold">Feature Flags</div>
+    <div class="text-sm opacity-70">What they are, why we use them.</div>
+  </div>
+</div>
+
+<div class="rounded-lg border border-gray-200 overflow-hidden shadow-sm flex flex-col h-full">
+  <div class="bg-gray-50 p-4 flex items-center justify-center h-40">
+    <img src="/img/openfeature-horizontal-black.svg" class="max-h-full max-w-full object-contain" />
+  </div>
+  <div class="p-4 flex flex-col gap-1">
+    <div class="text-3xl opacity-40 leading-none">2</div>
+    <div class="text-lg font-semibold">OpenFeature</div>
+    <div class="text-sm opacity-70">A vendor-agnostic standard.</div>
+  </div>
+</div>
+
+<div class="rounded-lg border border-gray-200 overflow-hidden shadow-sm flex flex-col h-full">
+  <div class="bg-gray-50 p-4 flex items-center justify-center h-40">
+    <img src="/img/feature-flagging-iceberg.png" class="max-h-full max-w-full object-contain" />
+  </div>
+  <div class="p-4 flex flex-col gap-1">
+    <div class="text-3xl opacity-40 leading-none">3</div>
+    <div class="text-lg font-semibold">Pitfalls & Fixes</div>
+    <div class="text-sm opacity-70">Three problems. Three concepts. One rhythm.</div>
+  </div>
+</div>
+
+</v-clicks>
+
+</div>
+
+---
+layout: section
+---
+
+# Feature Flags
+
+## What are they — and why bother?
+
+---
+layout: statement
+---
+
+Feature flags **enable, disable, or change behavior** of features in a product or service — **without modifying the source code**.
+
+---
+layout: default
+---
+
+# Coordinate & Target
+
+<div class="grid grid-cols-3 gap-6 mt-8 items-stretch">
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:time class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Synchronized rollouts</div>
+    <div class="text-sm opacity-70">ship a new feature to every service at the same moment, without coordinating deploys</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:chart-multi-line class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">A/B experiments</div>
+    <div class="text-sm opacity-70">serve two variants, measure which wins, close the loop with data</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:user-multiple class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Targeted release</div>
+    <div class="text-sm opacity-70">beta testers, enterprise tier, a single region — each sees a different flag value</div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# Reduce Risk
+
+<div class="grid grid-cols-3 gap-6 mt-8 items-stretch">
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:launch class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Deploy ≠ release</div>
+    <div class="text-sm opacity-70">ship code dark; turn it on later without redeploying</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:stop-outline class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Kill switch</div>
+    <div class="text-sm opacity-70">disable a bad feature in seconds, no revert, no rebuild</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:chart-line class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Progressive rollout</div>
+    <div class="text-sm opacity-70">1% → 10% → 100%, monitoring errors as you ramp</div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# Categories of Feature Flags
+
+Those use-cases aren't all the same kind of flag — they differ in **longevity** and **dynamism**.
+
+<div class="flex justify-center mt-2">
+  <img src="/img/fowler-ff-types.png" class="mx-auto" style="max-height: 340px; max-width: 90%; width: auto; height: auto; object-fit: contain;"/>
+</div>
+
+<div class="text-xs text-center opacity-60 mt-2">
+  <a href="https://martinfowler.com/articles/feature-toggles.html" target="_blank">Pete Hodgson — Feature Flag Types (martinfowler.com)</a>
+</div>
+
+<div class="text-sm text-center opacity-70 mt-1">
+  These categories tell us <i>what kinds</i> of flags exist — but how mature is an organisation's usage of them?
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <div class="text-xs opacity-60 text-right leading-tight pb-1">
+    Pete Hodgson<br/>Feature Flag Types
+  </div>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://martinfowler.com/articles/feature-toggles.html" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
+layout: two-cols
+---
+
+# Feature Flagging Maturity
+
+<div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
+
+<div class="bg-white rounded-lg shadow-sm p-3 flex items-center justify-center mt-3 relative" style="height: 400px;">
+  <img src="/img/maturity-model-cropped.svg" class="mx-auto" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+  <v-switch unmount at="1" class="absolute inset-0 flex items-center justify-center pointer-events-none">
+    <template #1><img src="/img/maturity-level-1-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
+    <template #2><img src="/img/maturity-level-2-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
+    <template #3><img src="/img/maturity-level-3-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
+    <template #4><img src="/img/maturity-level-4-v2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/></template>
+  </v-switch>
+</div>
+
+::right::
+
+<v-switch unmount at="1" class="mt-16">
+  <template #1>
+    <div class="space-y-3">
+      <div class="text-xs uppercase tracking-wider opacity-60">Level 1 — The ENV_VAR swamp</div>
+      <p class="text-lg opacity-85">Hand-rolled booleans, env vars, and config files scattered across services. No central control. Changes require a redeploy.</p>
+    </div>
+  </template>
+  <template #2>
+    <div class="space-y-3">
+      <div class="text-xs uppercase tracking-wider opacity-60">Level 2 — Dynamic configuration</div>
+      <p class="text-lg opacity-85">A single place to flip flags without redeploying. Operations-friendly — you can disable a bad feature in seconds.</p>
+    </div>
+  </template>
+  <template #3>
+    <div class="space-y-3">
+      <div class="text-xs uppercase tracking-wider opacity-60">Level 3 — Dynamic evaluation</div>
+      <p class="text-lg opacity-85">Per-user, per-segment, per-tenant targeting. Experimentation. Personalisation. Progressive rollouts.</p>
+    </div>
+  </template>
+  <template #4>
+    <div class="space-y-3">
+      <div class="text-xs uppercase tracking-wider opacity-60">Level 4 — Operationalized Feature-Flags</div>
+      <p class="text-lg opacity-85">Flags treated like any other part of the SDLC — ownership, cleanup policies, audit trails, observability wired in by default.</p>
+    </div>
+  </template>
+</v-switch>
+
+---
+layout: center
+---
+
+<span class="sr-only">OpenFeature</span>
+
+<div class="flex flex-col items-center gap-6 mt-4">
+  <img src="/img/openfeature-horizontal-black.svg" class="h-24"/>
+  <div class="text-xl opacity-80 text-center max-w-2xl">A vendor-agnostic, community-driven standard for feature flagging</div>
+  <div class="flex flex-col items-center gap-1 mt-4">
+    <img src="/img/cncf-incubating-color.svg" class="h-20"/>
+    <div class="text-xs opacity-60">CNCF Incubating project</div>
+  </div>
+</div>
+
+---
+
+# A short history
+
+<div class="text-sm opacity-70 -mt-2 mb-8">From internal tool to CNCF standard</div>
+
+<div class="grid grid-cols-4 gap-4 mt-8">
+
+  <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
+    <carbon:idea class="text-3xl opacity-80"/>
+    <div class="text-lg font-semibold">2021</div>
+    <div class="text-sm opacity-80">Initiated by <strong>Dynatrace</strong> as an internal effort to standardize feature flagging</div>
+  </div>
+
+  <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
+    <carbon:bullhorn class="text-3xl opacity-80"/>
+    <div class="text-lg font-semibold">May 2022</div>
+    <div class="text-sm opacity-80">Announced at <strong>KubeCon Valencia</strong> as an open, vendor-neutral project</div>
+  </div>
+
+  <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
+    <carbon:growth class="text-3xl opacity-80"/>
+    <div class="text-lg font-semibold">2023</div>
+    <div class="text-sm opacity-80">Accepted as a <strong>CNCF Incubating</strong> project</div>
+  </div>
+
+  <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
+    <carbon:collaborate class="text-3xl opacity-80"/>
+    <div class="text-lg font-semibold">Today</div>
+    <div class="text-sm opacity-80">A <strong>collaborative, multi-vendor</strong> standard with broad adoption</div>
+  </div>
+
+</div>
+
+---
+
+# Why did it need to exist?
+
+- **Observability** — see what flags do in production
+- **Insights** — understand evaluation patterns across systems
+- **Shared pain** — every org re-invented the same abstractions
+
+<div class="mt-8 p-4 rounded border border-gray-300 text-sm">
+  📺 For the concrete internal pains that sparked it, see my previous talk:
+  <a href="https://www.youtube.com/watch?v=pvjmPTTyCfc" target="_blank">youtube.com/watch?v=pvjmPTTyCfc</a>
+</div>
+
+---
+layout: statement
+---
+
+OpenFeature is an **open specification** that provides a **vendor-agnostic, community-driven API** for feature flagging that works with your favorite feature flag management tool.
+
+<div class="text-xs opacity-60 mt-6">
+  <a href="https://openfeature.dev/docs/reference/intro" target="_blank">openfeature.dev/docs/reference/intro</a>
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <div class="text-xs text-right leading-tight pb-1 opacity-80">
+    openfeature.dev<br/>reference intro
+  </div>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/docs/reference/intro" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# Flow
+
+<div class="max-w-3xl mx-auto mt-12">
+
+```mermaid {theme: 'neutral', scale: 0.7}
+flowchart LR
+    A[Application] --> API(Evaluation API)
+    API --> P[Provider]
+    P --> FMS[(Flag Management System)]
+```
+
+</div>
+
+<div class="text-sm opacity-70 text-center mt-8">
+  Your code talks to the Evaluation API. The Provider adapts to whichever flag management tool you use.
+</div>
+
+---
+layout: two-cols
+---
+
+# Basic usage
+
+<div class="pt-4 space-y-6 text-base">
+  <v-click at="1">
+    <div>
+      <div class="font-bold">Get the API and register a provider</div>
+      <div class="opacity-75 text-sm">The API is the single entry point. A provider connects OpenFeature to your flag source.</div>
+    </div>
+  </v-click>
+  <v-click at="2">
+    <div>
+      <div class="font-bold">Grab a client</div>
+      <div class="opacity-75 text-sm">Clients are cheap to create and scope evaluations.</div>
+    </div>
+  </v-click>
+  <v-click at="3">
+    <div>
+      <div class="font-bold">Evaluate a flag</div>
+      <div class="opacity-75 text-sm">Name, default value — always returns <em>something</em>.</div>
+    </div>
+  </v-click>
+</div>
+
+::right::
+
+<div class="text-xs font-mono uppercase tracking-wider opacity-60 mb-2">
+  <span v-if="$clicks < 4">Java</span>
+  <span v-else-if="$clicks === 4">Node.js</span>
+  <span v-else>Go</span>
+</div>
+
+<div v-if="$clicks < 4">
+
+```java {all|1-2|4|6-7}{lines:true}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new InMemoryProvider(myFlags));
+
+var client = api.getClient();
+
+boolean on = client.getBooleanValue(
+    "v2_enabled", false);
+```
+
+</div>
+
+<div v-else-if="$clicks === 4">
+
+```ts {lines:true}
+import { OpenFeature } from '@openfeature/server-sdk';
+
+await OpenFeature.setProviderAndWait(new YourProvider());
+
+const client = OpenFeature.getClient();
+
+const on = await client.getBooleanValue(
+    'v2_enabled', false);
+```
+
+</div>
+
+<div v-else>
+
+```go {lines:true}
+openfeature.SetProvider(openfeature.NoopProvider{})
+
+client := openfeature.NewClient("my-app")
+
+on, _ := client.BooleanValue(
+    context.Background(),
+    "v2_enabled",
+    false,
+    openfeature.EvaluationContext{})
+```
+
+</div>
+
+<div class="text-xs opacity-60 pt-2">
+  <a v-if="$clicks < 4" href="https://openfeature.dev/docs/reference/technologies/server/java" target="_blank">openfeature.dev — Java SDK</a>
+  <a v-else-if="$clicks === 4" href="https://openfeature.dev/docs/reference/technologies/server/javascript" target="_blank">openfeature.dev — JavaScript SDK</a>
+  <a v-else href="https://openfeature.dev/docs/reference/technologies/server/go" target="_blank">openfeature.dev — Go SDK</a>
+</div>
+
+<v-click at="4" hide><span></span></v-click>
+<v-click at="5" hide><span></span></v-click>
+
+---
+
+# Supported Types
+
+<div class="grid grid-cols-5 gap-4 mt-10">
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
+    <carbon:boolean class="text-4xl opacity-70"/>
+    <div class="font-bold">Boolean</div>
+    <code class="text-xs opacity-75">getBooleanValue(key, false)</code>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
+    <carbon:string-text class="text-4xl opacity-70"/>
+    <div class="font-bold">String</div>
+    <code class="text-xs opacity-75">getStringValue(key, "fallback")</code>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
+    <carbon:number-1 class="text-4xl opacity-70"/>
+    <div class="font-bold">Integer</div>
+    <code class="text-xs opacity-75">getIntegerValue(key, 0)</code>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
+    <carbon:letter-dd class="text-4xl opacity-70"/>
+    <div class="font-bold">Double</div>
+    <code class="text-xs opacity-75">getDoubleValue(key, 0d)</code>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex flex-col items-center gap-2 text-center">
+    <carbon:data-structured class="text-4xl opacity-70"/>
+    <div class="font-bold">Object</div>
+    <code class="text-xs opacity-75">getObjectValue(key, new Value())</code>
+  </div>
+
+</div>
+
+<div class="text-center mt-10 text-lg opacity-75">One call shape. Five return types.</div>
+
+---
+layout: fact
+---
+
+# Evaluation API
+
+One API. Many languages. Always a value.
+
+<div class="text-base opacity-70 mt-4">Never breaks your code — defaults are mandatory.</div>
+
+<blockquote class="text-sm opacity-70 italic mt-8 max-w-3xl mx-auto border-l-4 border-gray-300 pl-4 text-left">
+  The Evaluation API is the <b>primary component of OpenFeature that application authors interact with</b>. The Evaluation API allows developers to evaluate feature flags to alter control flow and application characteristics.
+</blockquote>
+
+<div class="text-xs opacity-60 mt-6">
+  <a href="https://openfeature.dev/docs/reference/concepts/evaluation-api" target="_blank">openfeature.dev — evaluation API</a>
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <div class="text-xs opacity-60 text-right leading-tight pb-1">
+    openfeature.dev<br/>evaluation API
+  </div>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/docs/reference/concepts/evaluation-api" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
+layout: section
+---
+
+# Feature Flagging is an Iceberg
+
+## What you see is not what you get.
+
+---
+layout: center
+---
+
+# The Feature-Flagging Iceberg
+
+<img src="/img/feature-flagging-iceberg.png" class="mx-auto max-h-[65vh]"/>
+
+<div class="text-xs opacity-60 text-center mt-2">
+  <a href="https://openfeature.dev/blog/openfeature-a-standard-for-feature-flagging/#the-feature-flagging-iceberg" target="_blank">openfeature.dev — feature-flagging iceberg</a>
+</div>
+
+---
+layout: two-cols
+---
+
+# At the start, you see…
+
+- A boolean toggle
+- `if (flag) { newThing() }`
+- "How hard can it be?"
+
+::right::
+
+# Later you discover…
+
+- Vendor lock-in
+- Dynamic targeting / experiments
+- Stale & obsolete flags
+- Observability gaps
+- Brittle string keys
+- Lifecycle & governance
+
+<div class="text-sm opacity-70 pt-4">
+  We'll focus on <b>three</b> of these in depth.
+</div>
+
+---
+layout: section
+---
+
+# Problem 1
+
+## Vendor Lock-in
+
+Homegrown solutions and vendor-specific SDKs trap you.
+
+---
+layout: default
+---
+
+# Homegrown
+
+<div class="text-sm opacity-70">You're your own vendor — with extra pain.</div>
+
+<div class="grid grid-cols-3 gap-6 mt-8 items-stretch">
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:rocket class="text-5xl opacity-70" />
+    <div class="font-bold text-lg">Early — quick win</div>
+    <div class="text-sm opacity-70">
+      <code>if (featureEnabled) { ... }</code> — ten lines of code, shipping next week.
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:chart-line-data class="text-5xl opacity-70" />
+    <div class="font-bold text-lg">Later — complexity creeps in</div>
+    <div class="text-sm opacity-70">
+      Each service rolls its own. No central UI. No targeting. Flags duplicate, drift, rot.
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:building class="text-5xl opacity-70" />
+    <div class="font-bold text-lg">Eventually — you built a platform</div>
+    <div class="text-sm opacity-70">
+      API, UI, targeting, observability. Congratulations, you're a vendor.
+    </div>
+  </div>
+
+</div>
+
+---
+layout: default
+---
+
+# Vendors
+
+<div class="text-sm opacity-70">They solve your homegrown pain — and create their own.</div>
+
+<div class="grid grid-cols-3 gap-6 mt-8 items-stretch">
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:checkmark-outline class="text-5xl opacity-70" />
+    <div class="font-bold text-lg">Relief</div>
+    <div class="text-sm opacity-70">
+      UI, targeting, observability — out of the box. Someone else maintains the platform.
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:plug class="text-5xl opacity-70" />
+    <div class="font-bold text-lg">Bespoke SDK</div>
+    <div class="text-sm opacity-70">
+      Each vendor ships their own client library. Integration is specific to them.
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:warning class="text-5xl opacity-70" />
+    <div class="font-bold text-lg">Migration = pain</div>
+    <div class="text-sm opacity-70">
+      Changing vendors rewrites every call site. Different API, different semantics. Same lock-in, new colour.
+    </div>
+  </div>
+
+</div>
+
+---
+layout: center
+---
+
+# Concept: Providers
+
+<img src="/img/architecture.png" class="mx-auto max-h-[60vh]"/>
+
+<div class="text-xs text-center opacity-60 mt-2">
+  <a href="https://openfeature.dev/docs/reference/intro#what-is-openfeature" target="_blank">OpenFeature provider architecture</a>
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <div class="text-xs opacity-60 text-right leading-tight pb-1">
+    OpenFeature<br/>provider architecture
+  </div>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/docs/reference/intro#what-is-openfeature" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
+layout: default
+transition: fade
+---
+
+# Swap providers
+
+<div class="text-sm mb-4">
+  This happens <b>once, at startup</b>. Your call sites never change.
+</div>
+
+```java {2}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new InMemoryProvider(myFlags));
+
+var client = api.getClient();
+boolean on = client.getBooleanValue("v2_enabled", false);
+```
+
+<div class="text-xs opacity-60 mt-2">InMemoryProvider — local/dev</div>
+<div class="text-xs opacity-60 mt-2">
+  <carbon:document class="inline-block align-middle" /> built-in; useful for tests and local dev —
+  <a href="https://openfeature.dev/specification/appendix-a/#in-memory-provider" target="_blank">spec: in-memory provider</a>
+</div>
+
+---
+layout: default
+transition: fade
+---
+
+# Swap providers
+
+<div class="text-sm mb-4">
+  This happens <b>once, at startup</b>. Your call sites never change.
+</div>
+
+```java {2}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new FlagdProvider(config));
+
+var client = api.getClient();
+boolean on = client.getBooleanValue("v2_enabled", false);
+```
+
+<div class="text-xs opacity-60 mt-2">FlagdProvider — cloud-native reference</div>
+<div class="text-xs opacity-60 mt-2">
+  <carbon:document class="inline-block align-middle" /> cloud-native reference; YAML/JSON flags, OFREP-compatible —
+  <a href="https://flagd.dev" target="_blank">flagd.dev</a>
+</div>
+
+---
+layout: default
+transition: fade
+---
+
+# Swap providers
+
+<div class="text-sm mb-4">
+  This happens <b>once, at startup</b>. Your call sites never change.
+</div>
+
+```java {2}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new LaunchDarklyProvider(ldClient));
+
+var client = api.getClient();
+boolean on = client.getBooleanValue("v2_enabled", false);
+```
+
+<div class="text-xs opacity-60 mt-2">LaunchDarklyProvider — commercial vendor</div>
+<div class="text-xs opacity-60 mt-2">
+  <carbon:document class="inline-block align-middle" /> ~130 providers in the ecosystem —
+  <a href="https://openfeature.dev/ecosystem" target="_blank">openfeature.dev/ecosystem</a>
+</div>
+
+---
+layout: default
+transition: fade
+---
+
+# Swap providers
+
+<div class="text-sm mb-4">
+  This happens <b>once, at startup</b>. Your call sites never change.
+</div>
+
+```java {2}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new SplitProvider(splitClient));
+
+var client = api.getClient();
+boolean on = client.getBooleanValue("v2_enabled", false);
+```
+
+<div class="text-xs opacity-60 mt-2">SplitProvider — commercial vendor</div>
+<div class="text-xs opacity-60 mt-2">
+  <carbon:document class="inline-block align-middle" /> pick the vendor that fits your stack —
+  <a href="https://openfeature.dev/ecosystem" target="_blank">openfeature.dev/ecosystem</a>
+</div>
+
+---
+layout: default
+transition: fade
+---
+
+# Swap providers
+
+<div class="text-sm mb-4">
+  This happens <b>once, at startup</b>. Your call sites never change.
+</div>
+
+```java {2}
+var api = OpenFeatureAPI.getInstance();
+api.setProviderAndWait(new MultiProvider(providers));
+
+var client = api.getClient();
+boolean on = client.getBooleanValue("v2_enabled", false);
+```
+
+<div class="text-xs opacity-60 mt-2">MultiProvider — combine multiple sources</div>
+<div class="text-xs opacity-60 mt-2">
+  <carbon:document class="inline-block align-middle" /> combine sources: one for experiments, one for kill switches —
+  <a href="https://openfeature.dev/specification/appendix-a/#multi-provider" target="_blank">spec: multi-provider</a>
+</div>
+
+---
+layout: fact
+---
+
+# Providers
+
+Swap vendors without touching call sites.
+
+<blockquote class="text-sm opacity-70 italic mt-8 max-w-3xl mx-auto border-l-4 border-gray-300 pl-4 text-left">
+  Providers are responsible for performing flag evaluations. They provide an <b>abstraction between the underlying flag management system and the OpenFeature SDK</b>.
+</blockquote>
+
+<div class="text-xs opacity-60 mt-6">
+  <a href="https://openfeature.dev/docs/reference/concepts/provider" target="_blank">openfeature.dev — providers</a>
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <div class="text-xs opacity-60 text-right leading-tight pb-1">
+    openfeature.dev<br/>providers
+  </div>
+  <div class="bg-white p-1 rounded">
+    <QRCode data="https://openfeature.dev/docs/reference/concepts/provider" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
+layout: section
+---
+
+# Problem 2
+
+## Static flags aren't enough
+
+You need rulesets — per user, per tenant, per experiment.
+
+---
+
+# Why dynamic evaluation?
+
+<div class="grid grid-cols-2 gap-4 mt-8 text-lg">
+  <div class="p-4 rounded border border-gray-300">🧪 A/B testing</div>
+  <div class="p-4 rounded border border-gray-300">🔒 Quality assurance</div>
+  <div class="p-4 rounded border border-gray-300">💎 Premium users</div>
+  <div class="p-4 rounded border border-gray-300">🍖 Dogfooding</div>
+  <div class="p-4 rounded border border-gray-300 col-span-2">⚖️ Compliance / regional constraints</div>
+</div>
+
+---
+
+# A flagd config with targeting
+
+```json {3|5-8|10-19}
+{
+  "flags": {
+    "v2_enabled": {
+      "state": "ENABLED",
+      "variants": {
+        "on": true,
+        "off": false
+      },
+      "defaultVariant": "off",
+      "targeting": {
+        "if": [
+          { "ends_with": [ { "var": "email" }, "@domain.com" ] },
+          "on",
+          "off"
+        ]
+      }
+    }
+  }
+}
+```
+
+<div class="text-xs opacity-60 mt-4">
+  <carbon:information class="inline-block align-middle" /> This is flagd's rule syntax. Every provider configures targeting differently — OpenFeature standardises the <em>input</em> to evaluation, not how rules are written.
+</div>
+
+---
+
+# Concept: Evaluation Context
+
+Pass contextual data to the evaluation — per request, per session, per tenant.
+
+```java {1-5|6-7|9-10}
+Map<String, Value> attrs = new HashMap<>();
+attrs.put("email",
+    new Value(session.getAttribute("email")));
+attrs.put("product",
+    new Value("productId"));
+EvaluationContext reqCtx =
+    new ImmutableContext(attrs);
+
+boolean on =
+    client.getBooleanValue("v2_enabled", false, reqCtx);
+```
+
+---
+layout: statement
+---
+
+What *else* could we target on?
+
+<div class="text-lg opacity-60 mt-6">
+  We've just seen user targeting. But the evaluation context can carry anything.
+</div>
+
+---
+layout: default
+---
+
+# Operational context
+
+<div class="text-lg opacity-70 mb-6">Feed the evaluation what's true about <em>your runtime</em>, not just the user.</div>
+
+<div class="grid grid-cols-2 gap-6 mt-4 items-stretch">
+  <div class="rounded-lg border border-gray-200 shadow-sm p-5 text-center flex flex-col items-center gap-2">
+    <carbon:cloud class="text-4xl opacity-70"/>
+    <div class="font-bold">Hosting</div>
+    <div class="text-sm opacity-70">cloud, region, cluster, tenant</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-5 text-center flex flex-col items-center gap-2">
+    <carbon:code class="text-4xl opacity-70"/>
+    <div class="font-bold">Runtime</div>
+    <div class="text-sm opacity-70">Java / Node / Go version, JVM flags</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-5 text-center flex flex-col items-center gap-2">
+    <carbon:application class="text-4xl opacity-70"/>
+    <div class="font-bold">App</div>
+    <div class="text-sm opacity-70">version, release channel, feature branch</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-5 text-center flex flex-col items-center gap-2">
+    <carbon:mobile class="text-4xl opacity-70"/>
+    <div class="font-bold">Platform</div>
+    <div class="text-sm opacity-70">Android / iOS version, browser, OS</div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# Reduce the bug radius
+
+<div class="text-lg opacity-70 mb-6">Roll a fix out narrowly before widening.</div>
+
+<div class="flex flex-col gap-3 mt-4">
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex items-center gap-3">
+    <carbon:arrow-right class="text-2xl opacity-50 shrink-0"/>
+    <div>Enable on our <strong>staging</strong> cluster only — monitor before production</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex items-center gap-3">
+    <carbon:arrow-right class="text-2xl opacity-50 shrink-0"/>
+    <div>Turn on for <strong>Android 14+</strong> users — older platforms aren't affected by the bug</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-4 flex items-center gap-3">
+    <carbon:arrow-right class="text-2xl opacity-50 shrink-0"/>
+    <div>Roll out to the <strong>EU region</strong> first — we can react within business hours</div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
+# Context on every call is tedious
+
+<div class="text-lg opacity-70 mb-6">Passing the same context to every evaluation makes call sites noisy and easy to forget.</div>
+
+```java
+client.getBooleanValue("a", false, ctx);
+client.getBooleanValue("b", false, ctx);
+client.getBooleanValue("c", false, ctx);  // ... on every call
+```
+
+<div class="text-lg mt-8">Set it once. Let the SDK apply it everywhere.</div>
+
+---
+
+# Static context — set it once
+
+```java {1-4|5-9}
+// global — applies to every evaluation
+OpenFeatureAPI.getInstance().setEvaluationContext(
+    new MutableContext().add("region", "eu"));
+
+// client — applies to every call from this client
+var client = api.getClient();
+client.setEvaluationContext(
+    new MutableContext().add("domain", "checkout"));
+```
+
+---
+layout: center
+---
+
+# Merge Order
+
+<img src="/img/mergeorder.svg" class="mx-auto max-h-[55vh]"/>
+
+<div class="text-xs opacity-60 text-center mt-2">
+  <a href="https://openfeature.dev/specification/sections/evaluation-context#requirement-323" target="_blank">spec §3.2.3 — evaluation context</a>
+</div>
+
+---
+
+# Targeting Key
+
+- Unique **subject identifier** (user id, session id, …)
+- Makes fractional / percentage evaluations **deterministic**
+- Same user → same result, every time
+
+```java
+String targetingKey = session.getId();
+EvaluationContext reqCtx =
+    new ImmutableContext(targetingKey, requestAttrs);
+```
+
+---
+layout: fact
+---
+
+# Evaluation Context
+
+Dynamic evaluation · Deterministic targeting.
+
+<blockquote class="text-sm opacity-70 italic mt-8 max-w-3xl mx-auto border-l-4 border-gray-300 pl-4 text-left">
+  The evaluation context is a <b>container for arbitrary contextual data that can be used as a basis for dynamic evaluation</b>.
+</blockquote>
+
+<div class="text-xs opacity-60 mt-6">
+  <a href="https://openfeature.dev/docs/reference/concepts/evaluation-context" target="_blank">openfeature.dev — evaluation context</a>
+</div>
+
+---
+layout: section
+---
+
+# Problem 3
+
+## Obsolete Feature Flags
+
+Flags that never change value — or never get evaluated at all.
+
+---
+
+# What happens in real orgs
+
+- Thousands of flags accumulate
+- Hundreds never evaluated in months
+- The oldest go back **years**
+- Dead code · technical debt · hidden complexity
+
+<div class="mt-8 p-4 rounded border border-gray-300 text-sm">
+  📺 For concrete numbers from a real organization, see my previous talk:
+  <a href="https://www.youtube.com/watch?v=pvjmPTTyCfc" target="_blank">youtube.com/watch?v=pvjmPTTyCfc</a>
+</div>
+
+---
+layout: statement
+---
+
+When is it safe to remove a flag?
+
+We have to **observe** flag evaluations.
+
+---
+layout: center
+---
+
+# Flag Evaluation Life-Cycle
+
+<img src="/img/evallifecycle.svg" class="mx-auto max-h-[55vh]"/>
+
+<div class="text-xs opacity-60 text-center mt-2">
+  <a href="https://openfeature.dev/specification/sections/hooks#overview" target="_blank">spec — hooks overview</a>
+</div>
+
+---
+
+# Concept: Hooks
+
+Inject behavior at well-defined points in the evaluation life-cycle.
+
+```java
+// per-invocation
+client.getBooleanValue("key", false, ctx,
+    FlagEvaluationOptions.builder()
+        .hook(new ExampleInvocationHook())
+        .build());
+
+// per-client
+client.addHooks(new ExampleClientHook());
+
+// global
+OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
+```
+
+---
+
+# Hooks + OpenTelemetry = observability for free
+
+<div class="grid grid-cols-2 gap-6 mt-6">
+
+<div>
+
+**Traces**
+- After + error stages
+- Details: key, provider, variant
+
+</div>
+
+<div>
+
+**Metrics**
+- Evaluation requests
+- Success / error counts
+- Active flag counter
+
+</div>
+
+</div>
+
+<div class="mt-8 text-sm opacity-70">
+  <a href="https://github.com/open-feature/java-sdk-contrib/tree/main/hooks/open-telemetry" target="_blank">github.com/open-feature/java-sdk-contrib — open-telemetry hook</a>
+</div>
+
+---
+
+# Other hook use-cases
+
+<div class="grid grid-cols-3 gap-4 mt-8">
+  <div class="p-6 rounded border border-gray-300 text-center">
+    <div class="text-3xl mb-2">📝</div>
+    <div class="font-bold">Logging</div>
+  </div>
+  <div class="p-6 rounded border border-gray-300 text-center">
+    <div class="text-3xl mb-2">✅</div>
+    <div class="font-bold">Validation</div>
+  </div>
+  <div class="p-6 rounded border border-gray-300 text-center">
+    <div class="text-3xl mb-2">➕</div>
+    <div class="font-bold">Context enhancement</div>
+  </div>
+</div>
+
+---
+layout: fact
+---
+
+# Hooks
+
+Observe, enhance, extend — without forking a provider.
+
+<blockquote class="text-sm opacity-70 italic mt-8 max-w-3xl mx-auto border-l-4 border-gray-300 pl-4 text-left">
+  Hooks are a mechanism that allow for the <b>addition of arbitrary behavior at well-defined points of the flag evaluation life-cycle</b>.
+</blockquote>
+
+<div class="text-xs opacity-60 mt-6">
+  <a href="https://openfeature.dev/docs/reference/concepts/hooks" target="_blank">openfeature.dev — hooks</a>
+</div>
+
+---
+layout: section
+---
+
+# Take-aways
+
+## Three problems. Three concepts. One standard.
+
+---
+
+# What we covered
+
+<div class="grid grid-cols-2 gap-6 mt-8">
+
+<div class="p-6 rounded border-l-4 border-blue-500">
+  <div class="text-sm opacity-70">Problem</div>
+  <div class="text-xl font-bold">Vendor lock-in</div>
+  <div class="mt-3 text-sm opacity-70">Concept</div>
+  <div class="text-lg">🔌 Providers</div>
+</div>
+
+<div class="p-6 rounded border-l-4 border-purple-500">
+  <div class="text-sm opacity-70">Problem</div>
+  <div class="text-xl font-bold">Dynamic evaluation</div>
+  <div class="mt-3 text-sm opacity-70">Concept</div>
+  <div class="text-lg">🎯 Evaluation Context</div>
+</div>
+
+<div class="p-6 rounded border-l-4 border-green-500 col-span-2">
+  <div class="text-sm opacity-70">Problem</div>
+  <div class="text-xl font-bold">Obsolete flags</div>
+  <div class="mt-3 text-sm opacity-70">Concept</div>
+  <div class="text-lg">🪝 Hooks + OpenTelemetry</div>
+</div>
+
+</div>
+
+---
+layout: statement
+---
+
+<img src="/img/openfeature-horizontal-black.svg" class="mx-auto h-20 mb-8"/>
+
+Brings confidence to *everyone* in the Software Delivery Life-Cycle.
+
+---
+layout: statement
+---
+
+# One more thing…
+
+## The OpenFeature CLI
+
+<div class="text-sm opacity-70 mt-4">Fighting the last class of common pitfalls.</div>
+
+---
+
+# The brittle-string problem
+
+```java {1|3|5}
+client.getBooleanValue("v2_enabled", false);
+// typo in key — silently returns the default
+client.getBooleanValue("v2_enbld", false);
+// inconsistent fallbacks across call sites
+client.getBooleanValue("v2_enabled", true);
+```
+
+<div class="mt-6 text-sm opacity-70">
+  Abstractions and constants help — but wouldn't it be nicer if the SDK knew your flags?
+</div>
+
+---
+
+# Describe flags in a manifest
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/open-feature/cli/refs/heads/main/schema/v0/flag-manifest.json",
+  "flags": {
+    "v2_enabled": {
+      "flagType": "boolean",
+      "defaultValue": false,
+      "description": "Enables the v2 checkout flow"
+    }
+  }
+}
+```
+
+---
+layout: fact
+---
+
+# Generate type-safe accessors
+
+```shell
+openfeature generate <language>
+```
+
+<div class="text-sm opacity-60 mt-6">Still experimental — feedback welcome.</div>
+
+---
+layout: section
+---
+
+# Join us
+
+## OpenFeature grows with your problems — share your experience.
+
+---
+layout: default
+---
+
+# You're in good company
+
+Public adopters include:
+
+<div class="grid grid-cols-3 gap-3 mt-8 text-center text-lg">
+  <div class="p-3 rounded border border-gray-300">Dynatrace</div>
+  <div class="p-3 rounded border border-gray-300">Otto</div>
+  <div class="p-3 rounded border border-gray-300">eBay</div>
+  <div class="p-3 rounded border border-gray-300">Ford</div>
+  <div class="p-3 rounded border border-gray-300">Spotify</div>
+  <div class="p-3 rounded border border-gray-300">Google</div>
+  <div class="p-3 rounded border border-gray-300">Octopus Deploy</div>
+  <div class="p-3 rounded border border-gray-300 opacity-60 italic">… and more</div>
+  <div class="p-3 rounded border border-gray-300 opacity-60 italic">maybe you?</div>
+</div>
+
+---
+layout: image-right
+image: /img/qr-code.svg
+---
+
+# Try it out
+
+- 🌐 [openfeature.dev](https://openfeature.dev)
+- ☁️ [flagd.dev](https://flagd.dev) — cloud-native reference
+- 🛝 [flagd.dev/playground](https://flagd.dev/playground) — targeting rules
+- 📦 [Java Spring Boot demo](https://github.com/aepfli/Fun-With-Flags-Demo-Java)
+- 💬 [CNCF Slack #openfeature](https://cloud-native.slack.com/archives/C0344AANLA1)
+- 🐙 [github.com/open-feature](https://github.com/open-feature)
+
+---
+layout: end
+---
+
+# Thanks — Q&A
+
+Problems: lock-in · dynamic evaluation · obsolete flags
+Concepts: providers · evaluation context · hooks
+
+<div class="mt-10 text-sm opacity-80">
+  <carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
+  <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
+  <carbon:logo-linkedin class="inline"/> in/aepfli
+</div>
