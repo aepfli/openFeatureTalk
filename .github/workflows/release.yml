@@ -1,0 +1,50 @@
+name: Release PDFs
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to attach PDFs to (required for manual runs)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: slidev/package-lock.json
+
+      - name: Install
+        working-directory: slidev
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        working-directory: slidev
+        run: npx playwright install --with-deps chromium
+
+      - name: Export light PDF
+        working-directory: slidev
+        run: npx slidev export slides.md --output fun-with-flags-light.pdf --with-clicks
+
+      - name: Export dark PDF
+        working-directory: slidev
+        run: npx slidev export slides.md --output fun-with-flags-dark.pdf --dark --with-clicks
+
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name || inputs.tag }}
+          files: |
+            slidev/fun-with-flags-light.pdf
+            slidev/fun-with-flags-dark.pdf
+          fail_on_unmatched_files: true
