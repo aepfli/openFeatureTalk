@@ -323,26 +323,26 @@ layout: center
 
 # A short history
 
-<div class="text-sm opacity-70 -mt-2 mb-8">From internal tool to CNCF standard</div>
+<div class="text-sm opacity-70 -mt-2 mb-8">Born in public as a multi-vendor effort — open from day one.</div>
 
 <div class="grid grid-cols-4 gap-4 mt-8">
 
   <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
-    <carbon:idea class="text-3xl opacity-80"/>
-    <div class="text-lg font-semibold">2021</div>
-    <div class="text-sm opacity-80">Initiated by <strong>Dynatrace</strong> as an internal effort to standardize feature flagging</div>
+    <carbon:bullhorn class="text-3xl opacity-80"/>
+    <div class="text-lg font-semibold">May 2022</div>
+    <div class="text-sm opacity-80">Announced at <strong>KubeCon Valencia</strong> — a coalition of flag-vendor engineers inviting the community to contribute</div>
   </div>
 
   <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
-    <carbon:bullhorn class="text-3xl opacity-80"/>
-    <div class="text-lg font-semibold">May 2022</div>
-    <div class="text-sm opacity-80">Announced at <strong>KubeCon Valencia</strong> as an open, vendor-neutral project</div>
+    <carbon:idea class="text-3xl opacity-80"/>
+    <div class="text-lg font-semibold">June 2022</div>
+    <div class="text-sm opacity-80">Accepted into the <strong>CNCF Sandbox</strong> — an open-governance home from the start</div>
   </div>
 
   <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
     <carbon:growth class="text-3xl opacity-80"/>
-    <div class="text-lg font-semibold">2023</div>
-    <div class="text-sm opacity-80">Accepted as a <strong>CNCF Incubating</strong> project</div>
+    <div class="text-lg font-semibold">Nov 2023</div>
+    <div class="text-sm opacity-80">Promoted to <strong>CNCF Incubating</strong> — stable spec, 1.0 SDKs across major languages</div>
   </div>
 
   <div class="flex flex-col items-center text-center gap-2 p-4 rounded border border-gray-300">
@@ -357,13 +357,30 @@ layout: center
 
 # Why did it need to exist?
 
-- **Observability** — see what flags do in production
-- **Insights** — understand evaluation patterns across systems
-- **Shared pain** — every org re-invented the same abstractions
+<div class="grid grid-cols-3 gap-6 mt-8 items-stretch">
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:view class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Observability</div>
+    <div class="text-sm opacity-70">See what flags actually do in production — which ones fire, which error, which never evaluate.</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:analytics class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Insights</div>
+    <div class="text-sm opacity-70">Understand evaluation patterns across services, tenants, regions — one shared signal.</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:user-multiple class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Shared pain</div>
+    <div class="text-sm opacity-70">Every org re-invented the same abstraction. Reach for a standard instead.</div>
+  </div>
+</div>
 
-<div class="mt-8 p-4 rounded border border-gray-300 text-sm">
-  📺 For the concrete internal pains that sparked it, see my previous talk:
-  <a href="https://www.youtube.com/watch?v=pvjmPTTyCfc" target="_blank">youtube.com/watch?v=pvjmPTTyCfc</a>
+<div class="mt-8 p-4 rounded border border-gray-200 text-sm flex items-start gap-3">
+  <carbon:play-outline class="text-xl opacity-70 shrink-0 mt-0.5"/>
+  <div>
+    For the concrete internal pains that sparked it, see my previous talk:
+    <a href="https://www.youtube.com/watch?v=pvjmPTTyCfc" target="_blank">youtube.com/watch?v=pvjmPTTyCfc</a>
+  </div>
 </div>
 
 ---
@@ -1267,15 +1284,21 @@ layout: statement
 </div>
 
 ---
-layout: center
+layout: default
 ---
 
 # Flag Evaluation Life-Cycle
 
-<img src="/img/evallifecycle.svg" class="mx-auto max-h-[55vh]"/>
+<img src="/img/evallifecycle.svg" class="mx-auto mt-6" style="max-height: 520px; max-width: 92%; width: auto; height: auto; object-fit: contain;"/>
 
-<div class="text-xs opacity-60 text-center mt-2">
-  <a href="https://openfeature.dev/specification/sections/hooks#overview" target="_blank">spec — hooks overview</a>
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://openfeature.dev/specification/sections/hooks#overview" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Hooks — OpenFeature spec</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">openfeature.dev/specification/sections/hooks</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://openfeature.dev/specification/sections/hooks#overview" :width="90" :height="90" :margin="2" />
+  </div>
 </div>
 
 ---
@@ -1314,7 +1337,7 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 <div class="p-5 rounded-lg border border-gray-200 flex flex-col gap-2">
 
-**<carbon:view class="inline opacity-70"/> Traces**
+<div class="flex items-center gap-2 font-bold"><carbon:view class="opacity-70"/> Traces</div>
 
 - Span event per evaluation, attached to the current span
 - Flag key, provider, and chosen variant
@@ -1324,7 +1347,7 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 <div class="p-5 rounded-lg border border-gray-200 flex flex-col gap-2">
 
-**<carbon:chart-line-data class="inline opacity-70"/> Metrics**
+<div class="flex items-center gap-2 font-bold"><carbon:chart-line-data class="opacity-70"/> Metrics</div>
 
 - Total evaluation calls
 - Success / error counts
