@@ -263,10 +263,11 @@ layout: two-cols
 <div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
 
 <div class="bg-white dark:bg-transparent rounded-lg shadow-sm dark:shadow-none p-3 flex items-center justify-center mt-3" style="height: 400px;">
-  <img
-    :src="$clicks >= 1 && $clicks <= 4 ? `/img/maturity-step-${$clicks}.svg` : '/img/maturity-model-cropped.svg'"
-    style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"
-  />
+  <img v-if="$clicks === 1" src="/img/maturity-step-1.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+  <img v-else-if="$clicks === 2" src="/img/maturity-step-2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+  <img v-else-if="$clicks === 3" src="/img/maturity-step-3.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+  <img v-else-if="$clicks === 4" src="/img/maturity-step-4.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+  <img v-else src="/img/maturity-model-cropped.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
 </div>
 
 ::right::
