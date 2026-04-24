@@ -1314,7 +1314,7 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 <div class="p-5 rounded-lg border border-gray-200 flex flex-col gap-2">
 
-**🔭 Traces**
+**<carbon:view class="inline opacity-70"/> Traces**
 
 - Span event per evaluation, attached to the current span
 - Flag key, provider, and chosen variant
@@ -1324,7 +1324,7 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 <div class="p-5 rounded-lg border border-gray-200 flex flex-col gap-2">
 
-**📊 Metrics**
+**<carbon:chart-line-data class="inline opacity-70"/> Metrics**
 
 - Total evaluation calls
 - Success / error counts

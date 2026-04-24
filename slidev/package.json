@@ -16,6 +16,8 @@
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "@iconify-json/logos": "^1.2.11",
+    "@iconify-json/simple-icons": "^1.2.79",
     "playwright": "^1.48.0"
   },
   "engines": {
