@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="211.2845138055222 124.8 702.280912364946 372" width="702.280912364946" height="372">
+  <style>
+    .label { font-family: sans-serif; font-size: 18px; fill: white; font-weight: bold; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+
+  <!-- Level 1 (bottom): CURRENT -->
+  <polygon fill="#73BE28" points="570,470 230,470 270,400 530,400"/>
+  <polygon fill="#73BE28" fill-opacity="1" points="850,400 550,400 590,470 890,470"/>
+  <text class="label" y="435" x="700">The ENV_VAR swamp</text>
+
+  <!-- Level 2: dimmed -->
+  <g opacity="0.25">
+    <polygon fill="#6F2DA8" points="520,380 280,380 320,310 480,310"/>
+    <polygon fill="#6F2DA8" fill-opacity="0.5" points="800,310 500,310 540,380 840,380"/>
+    <text class="label" y="347" x="650">Dynamic configuration</text>
+  </g>
+
+  <!-- Level 3: dimmed -->
+  <g opacity="0.25">
+    <polygon fill="#B4DC00" points="360,230 440,230 470,290 330,290"/>
+    <polygon fill="#B4DC00" fill-opacity="0.5" points="760,230 460,230 490,290 790,290"/>
+    <text class="label" y="262" x="590">Dynamic evaluation</text>
+  </g>
+
+  <!-- Level 4 (top): dimmed -->
+  <g opacity="0.25">
+    <polygon fill="#1496FF" points="370,210 430,210 400,150"/>
+    <polygon fill="#1496FF" fill-opacity="0.5" points="720,150 420,150 450,210 750,210"/>
+    <text class="label" y="182" x="585">Operationalized Feature-Flags</text>
+  </g>
+</svg>

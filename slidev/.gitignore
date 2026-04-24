@@ -1,0 +1,6 @@
+node_modules
+dist
+.slidev-temp
+screenshots
+*.log
+scripts/probe.mjs
