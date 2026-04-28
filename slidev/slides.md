@@ -1560,7 +1560,11 @@ layout: statement
 
 <img src="/img/openfeature-horizontal-black.svg" class="mx-auto h-20 mb-8 dark:invert"/>
 
+<v-click>
+
 Brings confidence to *everyone* in the Software Delivery Life-Cycle.
+
+</v-click>
 
 ---
 layout: image
