@@ -1322,9 +1322,9 @@ layout: default
 
 # Concept: Hooks
 
-Inject behavior at well-defined points in the evaluation life-cycle.
+Inject behavior at well-defined points in the evaluation life-cycle — at any level you need.
 
-```java
+```java {1-5|7-8|10-11}
 // per-invocation
 client.getBooleanValue("key", false, ctx,
     FlagEvaluationOptions.builder()
