@@ -1696,12 +1696,12 @@ layout: default
   </div>
 </a>
 
-<a href="https://github.com/aepfli/Fun-With-Flags-Demo-Java" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+<a href="https://github.com/aepfli/Fun-With-Flags-Demo" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
   <carbon:rocket class="text-4xl opacity-70 shrink-0 mt-1"/>
   <div>
-    <div class="font-bold">Java Spring Boot demo</div>
-    <div class="text-sm opacity-70 mt-1">Clone, run, poke — a working reference using flagd, hooks, and OpenTelemetry.</div>
-    <div class="font-mono text-[10px] opacity-60 mt-1">github.com/aepfli/Fun-With-Flags-Demo-Java</div>
+    <div class="font-bold">Fun With Flags — demo</div>
+    <div class="text-sm opacity-70 mt-1">Clone, run, poke — working references across multiple languages and frameworks, using flagd, hooks, and OpenTelemetry.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">github.com/aepfli/Fun-With-Flags-Demo</div>
   </div>
 </a>
 
