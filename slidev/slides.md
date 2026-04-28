@@ -1418,14 +1418,14 @@ OpenFeatureAPI.getInstance().addHooks(new ExampleGlobalHook());
 
 <div class="p-5 rounded-lg border border-gray-200 shadow-sm flex flex-col gap-3 h-full">
   <div class="flex items-center gap-3">
-    <carbon:checkmark-outline class="text-4xl opacity-70"/>
-    <div class="font-bold text-lg">Validation</div>
+    <carbon:warning-alt class="text-4xl opacity-70"/>
+    <div class="font-bold text-lg">Alerting</div>
   </div>
   <div class="text-sm opacity-80">
-    Reject or normalise flag values before they reach your code — e.g. cap a percentage at 100, ensure an enum value is known.
+    React to specific resolved values — page on-call when a kill-switch flips on, warn when a flag has been returning its default for too long.
   </div>
   <div class="text-xs opacity-60 italic">
-    Useful for: defensive coding against mis-configured flags.
+    Useful for: turning the flag system into an operational safety net, not just a switch.
   </div>
 </div>
 
