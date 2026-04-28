@@ -1123,17 +1123,26 @@ client.getBooleanValue("c", false, ctx);  // ... on every call
 
 ---
 
-# Static context — set it once
+# Context at every level
 
-```java {1-4|5-9}
+<div class="text-sm opacity-70 -mt-2 mb-4">Set the context where the data actually lives — global, per-request, per-client, or per-call.</div>
+
+```java {1-3|5-7|9-12|14}
 // global — applies to every evaluation
 OpenFeatureAPI.getInstance().setEvaluationContext(
     new MutableContext().add("region", "eu"));
 
-// client — applies to every call from this client
-var client = api.getClient();
+// transaction — for the current request / unit of work
+OpenFeatureAPI.getInstance().setTransactionContext(
+    new MutableContext().add("requestId", id));
+
+// client — scoped to one client (e.g. one domain)
+var client = api.getClient("checkout");
 client.setEvaluationContext(
     new MutableContext().add("domain", "checkout"));
+
+// invocation — passed at the call site (we just saw this)
+client.getBooleanValue("v2_enabled", false, callCtx);
 ```
 
 ---
