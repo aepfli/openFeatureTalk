@@ -388,7 +388,7 @@ layout: center
 layout: statement
 ---
 
-OpenFeature is an **open specification** that provides a **vendor-agnostic, community-driven API** for feature flagging that works with your favorite feature flag management tool.
+OpenFeature is an <span v-mark.highlight.yellow="1">open specification</span> that provides a <span v-mark.highlight.yellow="2">vendor-agnostic, community-driven API</span> for feature flagging that works with your favorite feature flag management tool.
 
 <div class="abs-br m-6 flex items-end gap-2">
   <a href="https://openfeature.dev/docs/reference/intro" target="_blank" class="text-xs opacity-80 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
@@ -1747,10 +1747,24 @@ layout: end
   </div>
 </div>
 
-<div class="mt-12 text-sm opacity-80">
+<div class="mt-10 text-sm opacity-80">
   <carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
   <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
   <carbon:logo-linkedin class="inline"/> in/aepfli
+</div>
+
+<div class="mt-2 text-xs opacity-60 font-mono">
+  <carbon:logo-github class="inline align-middle"/> github.com/aepfli/openFeatureTalk
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://schrottner.at/openFeatureTalk/" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Slides — grab them now</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">schrottner.at/openFeatureTalk</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://schrottner.at/openFeatureTalk/" :width="90" :height="90" :margin="2" />
+  </div>
 </div>
 
 ---
