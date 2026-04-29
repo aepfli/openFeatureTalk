@@ -1907,7 +1907,7 @@ layout: section
 
 # Why a remote protocol?
 
-<div class="grid grid-cols-3 gap-5 mt-8 items-stretch">
+<div class="grid grid-cols-2 gap-5 mt-6 items-stretch">
   <div class="rounded-lg border border-gray-200 shadow-sm p-5 flex flex-col gap-3 h-full">
     <div class="flex items-center gap-3">
       <carbon:locked class="text-4xl opacity-70"/>
@@ -1925,6 +1925,16 @@ layout: section
     </div>
     <div class="text-sm opacity-80">
       Sensitive evaluation context — entitlements, account flags, private user attributes — stays on your server, never leaves your trust boundary.
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-200 shadow-sm p-5 flex flex-col gap-3 h-full">
+    <div class="flex items-center gap-3">
+      <carbon:catalog class="text-4xl opacity-70"/>
+      <div class="font-bold text-lg">Don't expose the variant catalog</div>
+    </div>
+    <div class="text-sm opacity-80">
+      The list of variants for a flag is its own leak — codenames for upcoming features, names of pricing tiers, experiment bucket labels. OFREP returns only the chosen variant, never the catalog.
     </div>
   </div>
 
