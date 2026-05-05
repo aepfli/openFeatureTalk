@@ -1779,7 +1779,7 @@ layout: end
     <QRCode data="https://community.open-ecosystem.com/invites/uG1vNeughb" :width="90" :height="90" :margin="2" />
   </div>
   <a href="https://community.open-ecosystem.com/invites/uG1vNeughb" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-left leading-tight pb-1 !text-inherit">
-    <div><carbon:gamepad class="inline"/> Try the community challenge</div>
+    <div><carbon:game-console class="inline"/> Try the community challenge</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">community.open-ecosystem.com</div>
   </a>
 </div>
