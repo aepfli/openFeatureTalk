@@ -291,13 +291,24 @@ layout: end
 </div>
 
 <div class="mt-10 text-sm opacity-80">
-  <carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
+  <carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp;
+  <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a> &nbsp;·&nbsp;
   <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
   <carbon:logo-linkedin class="inline"/> in/aepfli
 </div>
 
 <div class="mt-2 text-xs opacity-60 font-mono">
   <carbon:logo-github class="inline align-middle"/> github.com/aepfli/openFeatureTalk
+</div>
+
+<div class="abs-bl m-6 flex items-end gap-2">
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://community.open-ecosystem.com/invites/uG1vNeughb" :width="90" :height="90" :margin="2" />
+  </div>
+  <a href="https://community.open-ecosystem.com/invites/uG1vNeughb" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-left leading-tight pb-1 !text-inherit">
+    <div><carbon:game-console class="inline"/> Try the community challenge</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">community.open-ecosystem.com</div>
+  </a>
 </div>
 
 <div class="abs-br m-6 flex items-end gap-2">

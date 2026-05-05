@@ -22,6 +22,7 @@ layout: default
 - Lost **half a billion USD**
 - ... in **one hour**
 - ... due to a **feature flag**
+- ... only deployed to **7 of 8 servers**
 - ... they **repurposed**
 
 </v-clicks>
@@ -46,7 +47,8 @@ layout: intro
 
 <div class="pt-8 opacity-90 text-sm space-y-1">
   <div>Simon Schrottner · OpenFeature maintainer · CNCF Ambassador</div>
-  <div><carbon:email class="inline"/> simon.schrottner@gmail.com &nbsp;·&nbsp;
+  <div><carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp;
+       <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a> &nbsp;·&nbsp;
        <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
        <carbon:logo-linkedin class="inline"/> in/aepfli</div>
 </div>
@@ -76,7 +78,7 @@ image: /img/simon.jpg
 <div class="pt-4 text-sm opacity-70">Open Source enthusiast</div>
 
 <div class="pt-6 text-xs opacity-70 space-y-1">
-  <div><carbon:email class="inline"/> simon.schrottner@gmail.com</div>
+  <div><carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp; <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a></div>
   <div><carbon:logo-github class="inline"/> aepfli &nbsp; <carbon:logo-linkedin class="inline"/> in/aepfli</div>
   <div>🦋 @aepfli.bsky.social</div>
 </div>
