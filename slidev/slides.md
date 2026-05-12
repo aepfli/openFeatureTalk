@@ -876,49 +876,40 @@ layout: default
 transition: fade
 ---
 
-# Swap providers
+<div class="flex items-baseline justify-between gap-4">
+  <h1 class="!mb-0">Swap providers</h1>
+  <img src="/img/logos/flagsmith.svg" class="h-7 object-contain dark:invert" alt="Flagsmith"/>
+</div>
 
-<div class="text-sm mb-4">
+<div class="text-sm mb-4 mt-2">
   This happens <b>once, at startup</b>. Your call sites never change.
 </div>
 
 ```java {2}
 var api = OpenFeatureAPI.getInstance();
-api.setProviderAndWait(new LaunchDarklyProvider(ldClient));
+api.setProviderAndWait(new FlagsmithProvider(flagsmithConfig));
 
 var client = api.getClient();
 boolean on = client.getBooleanValue("v2_enabled", false);
 ```
 
-<div class="text-xs opacity-60 mt-2">LaunchDarklyProvider — commercial vendor</div>
+<div class="text-xs opacity-60 mt-2">
+  FlagsmithProvider — open-source platform, self-host or cloud —
+  <a href="https://www.flagsmith.com" target="_blank">flagsmith.com</a>
+</div>
 <div class="text-xs opacity-60 mt-2">
   <carbon:document class="inline-block align-middle" /> ~130 providers in the ecosystem —
   <a href="https://openfeature.dev/ecosystem" target="_blank">openfeature.dev/ecosystem</a>
 </div>
 
----
-layout: default
-transition: fade
----
-
-# Swap providers
-
-<div class="text-sm mb-4">
-  This happens <b>once, at startup</b>. Your call sites never change.
-</div>
-
-```java {2}
-var api = OpenFeatureAPI.getInstance();
-api.setProviderAndWait(new SplitProvider(splitClient));
-
-var client = api.getClient();
-boolean on = client.getBooleanValue("v2_enabled", false);
-```
-
-<div class="text-xs opacity-60 mt-2">SplitProvider — commercial vendor</div>
-<div class="text-xs opacity-60 mt-2">
-  <carbon:document class="inline-block align-middle" /> pick the vendor that fits your stack —
-  <a href="https://openfeature.dev/ecosystem" target="_blank">openfeature.dev/ecosystem</a>
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://www.flagsmith.com" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Flagsmith</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">flagsmith.com</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://www.flagsmith.com" :width="90" :height="90" :margin="2" />
+  </div>
 </div>
 
 ---
@@ -1023,6 +1014,29 @@ You need rulesets — per user, per tenant, per experiment.
 
 <div class="text-xs opacity-60 mt-4">
   <carbon:information class="inline-block align-middle" /> This is flagd's rule syntax. Every provider configures targeting differently — OpenFeature standardises the <em>input</em> to evaluation, not how rules are written.
+</div>
+
+---
+layout: default
+---
+
+<div class="flex items-baseline justify-between gap-4">
+  <h1 class="!mb-0">The same flag — in a UI</h1>
+  <img src="/img/logos/flagsmith.svg" class="h-7 object-contain dark:invert" alt="Flagsmith"/>
+</div>
+
+<div class="text-sm opacity-70 mt-2 mb-6">Same flag, same evaluation contract — managed through a self-hosted dashboard instead of a JSON file.</div>
+
+<div class="flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg border border-dashed border-gray-400 dark:border-gray-600" style="height: 380px;">
+  <div class="text-center opacity-60">
+    <carbon:image class="text-5xl mx-auto mb-3"/>
+    <div class="font-mono text-sm">screenshot placeholder</div>
+    <div class="text-xs mt-1">Flagsmith dashboard — v2_enabled flag with targeting</div>
+  </div>
+</div>
+
+<div class="text-xs opacity-60 mt-4">
+  <carbon:information class="inline-block align-middle" /> Same OpenFeature SDK call on the client. The flag source — JSON file, UI, or commercial vendor — is an implementation detail.
 </div>
 
 ---
@@ -1660,16 +1674,15 @@ layout: default
     <span class="font-semibold text-gray-800 text-sm">Datadog</span>
   </div>
   <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
-    <img src="/img/logos/octopusdeploy.svg" class="h-7 object-contain"/>
-    <span class="font-semibold text-gray-800 text-sm">Octopus</span>
-  </div>
-  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
     <img src="/img/logos/bookingdotcom.svg" class="h-7 object-contain"/>
     <span class="font-semibold text-gray-800 text-sm">Booking</span>
   </div>
   <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
     <img src="/img/logos/miro.svg" class="h-6 object-contain"/>
     <span class="font-semibold text-gray-800 text-sm">Miro</span>
+  </div>
+  <div class="p-3 rounded border border-gray-200 flex items-center justify-center gap-2 h-20 dark:bg-white">
+    <img src="/img/logos/flagsmith.svg" class="h-6 object-contain"/>
   </div>
 </div>
 
@@ -1694,21 +1707,21 @@ layout: default
   </div>
 </a>
 
-<a href="https://flagd.dev/playground" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
-  <carbon:play class="text-4xl opacity-70 shrink-0 mt-1"/>
-  <div>
-    <div class="font-bold">flagd playground</div>
-    <div class="text-sm opacity-70 mt-1">Targeting rules in the browser — no install, paste JSON, see evaluation results live.</div>
-    <div class="font-mono text-[10px] opacity-60 mt-1">flagd.dev/playground</div>
-  </div>
-</a>
-
 <a href="https://flagd.dev" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
   <carbon:cloud class="text-4xl opacity-70 shrink-0 mt-1"/>
   <div>
     <div class="font-bold">flagd</div>
     <div class="text-sm opacity-70 mt-1">Cloud-native reference provider — YAML/JSON flags, OFREP-compatible.</div>
     <div class="font-mono text-[10px] opacity-60 mt-1">flagd.dev</div>
+  </div>
+</a>
+
+<a href="https://www.flagsmith.com" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+  <img src="/img/logos/flagsmith.svg" class="h-7 object-contain shrink-0 mt-2 dark:invert" alt="Flagsmith"/>
+  <div>
+    <div class="font-bold">Flagsmith</div>
+    <div class="text-sm opacity-70 mt-1">Open-source, self-hosted flag management — UI, segments, OpenFeature + OFREP support.</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">flagsmith.com</div>
   </div>
 </a>
 
