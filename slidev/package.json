@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "slidev --open",
     "build": "slidev build",
-    "export": "slidev export",
+    "export": "slidev export --with-clicks --per-slide --wait 1500 --wait-until networkidle",
     "screenshot": "node scripts/screenshot.mjs"
   },
   "dependencies": {
