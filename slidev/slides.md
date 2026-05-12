@@ -266,41 +266,91 @@ layout: two-cols
 <div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
 
 <div class="bg-white dark:bg-transparent rounded-lg shadow-sm dark:shadow-none p-3 flex items-center justify-center mt-3" style="height: 400px;">
-  <img v-if="$clicks === 1" src="/img/maturity-step-1.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
-  <img v-else-if="$clicks === 2" src="/img/maturity-step-2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
-  <img v-else-if="$clicks === 3" src="/img/maturity-step-3.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
-  <img v-else-if="$clicks === 4" src="/img/maturity-step-4.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
-  <img v-else src="/img/maturity-model-cropped.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+  <img src="/img/maturity-model-cropped.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
 </div>
 
 ::right::
 
-<v-switch unmount at="1" class="mt-16">
-  <template #1>
-    <div class="space-y-3">
-      <div class="text-xs uppercase tracking-wider opacity-60">Level 1 — The ENV_VAR swamp</div>
-      <p class="text-lg opacity-85">Hand-rolled booleans, env vars, and config files scattered across services. No central control. Changes require a redeploy.</p>
-    </div>
-  </template>
-  <template #2>
-    <div class="space-y-3">
-      <div class="text-xs uppercase tracking-wider opacity-60">Level 2 — Dynamic configuration</div>
-      <p class="text-lg opacity-85">A single place to flip flags without redeploying. Operations-friendly — you can disable a bad feature in seconds.</p>
-    </div>
-  </template>
-  <template #3>
-    <div class="space-y-3">
-      <div class="text-xs uppercase tracking-wider opacity-60">Level 3 — Dynamic evaluation</div>
-      <p class="text-lg opacity-85">Per-user, per-segment, per-tenant targeting. Experimentation. Personalisation. Progressive rollouts.</p>
-    </div>
-  </template>
-  <template #4>
-    <div class="space-y-3">
-      <div class="text-xs uppercase tracking-wider opacity-60">Level 4 — Operationalized Feature-Flags</div>
-      <p class="text-lg opacity-85">Flags treated like any other part of the SDLC — ownership, cleanup policies, audit trails, observability wired in by default.</p>
-    </div>
-  </template>
-</v-switch>
+<div class="mt-16 space-y-3 opacity-70">
+  <div class="text-xs uppercase tracking-wider opacity-60">Where do you sit?</div>
+  <p class="text-lg opacity-85">Four levels — from scattered env vars to flags as a first-class part of the SDLC.</p>
+</div>
+
+---
+layout: two-cols
+---
+
+# Feature Flagging Maturity
+
+<div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
+
+<div class="bg-white dark:bg-transparent rounded-lg shadow-sm dark:shadow-none p-3 flex items-center justify-center mt-3" style="height: 400px;">
+  <img src="/img/maturity-step-1.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+</div>
+
+::right::
+
+<div class="mt-16 space-y-3">
+  <div class="text-xs uppercase tracking-wider opacity-60">Level 1 — The ENV_VAR swamp</div>
+  <p class="text-lg opacity-85">Hand-rolled booleans, env vars, and config files scattered across services. No central control. Changes require a redeploy.</p>
+</div>
+
+---
+layout: two-cols
+---
+
+# Feature Flagging Maturity
+
+<div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
+
+<div class="bg-white dark:bg-transparent rounded-lg shadow-sm dark:shadow-none p-3 flex items-center justify-center mt-3" style="height: 400px;">
+  <img src="/img/maturity-step-2.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+</div>
+
+::right::
+
+<div class="mt-16 space-y-3">
+  <div class="text-xs uppercase tracking-wider opacity-60">Level 2 — Dynamic configuration</div>
+  <p class="text-lg opacity-85">A single place to flip flags without redeploying. Operations-friendly — you can disable a bad feature in seconds.</p>
+</div>
+
+---
+layout: two-cols
+---
+
+# Feature Flagging Maturity
+
+<div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
+
+<div class="bg-white dark:bg-transparent rounded-lg shadow-sm dark:shadow-none p-3 flex items-center justify-center mt-3" style="height: 400px;">
+  <img src="/img/maturity-step-3.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+</div>
+
+::right::
+
+<div class="mt-16 space-y-3">
+  <div class="text-xs uppercase tracking-wider opacity-60">Level 3 — Dynamic evaluation</div>
+  <p class="text-lg opacity-85">Per-user, per-segment, per-tenant targeting. Experimentation. Personalisation. Progressive rollouts.</p>
+</div>
+
+---
+layout: two-cols
+---
+
+# Feature Flagging Maturity
+
+<div class="text-sm opacity-70 mt-1">Different organisations sit at different stages of adoption.</div>
+
+<div class="bg-white dark:bg-transparent rounded-lg shadow-sm dark:shadow-none p-3 flex items-center justify-center mt-3" style="height: 400px;">
+  <img src="/img/maturity-step-4.svg" style="height: 370px; max-width: 100%; width: auto; object-fit: contain;"/>
+</div>
+
+::right::
+
+<div class="mt-16 space-y-3">
+  <div class="text-xs uppercase tracking-wider opacity-60">Level 4 — Operationalized Feature-Flags</div>
+  <p class="text-lg opacity-85">Flags treated like any other part of the SDLC — ownership, cleanup policies, audit trails, observability wired in by default.</p>
+</div>
 
 ---
 layout: image
