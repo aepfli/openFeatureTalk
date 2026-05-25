@@ -1027,12 +1027,8 @@ layout: default
 
 <div class="text-sm opacity-70 mt-2 mb-6">Same flag, same evaluation contract — managed through a self-hosted dashboard instead of a JSON file.</div>
 
-<div class="flex items-center justify-center bg-gray-100 dark:bg-gray-800 rounded-lg border border-dashed border-gray-400 dark:border-gray-600" style="height: 380px;">
-  <div class="text-center opacity-60">
-    <carbon:image class="text-5xl mx-auto mb-3"/>
-    <div class="font-mono text-sm">screenshot placeholder</div>
-    <div class="text-xs mt-1">Flagsmith dashboard — v2_enabled flag with targeting</div>
-  </div>
+<div class="flex items-center justify-center rounded-lg border border-gray-300 dark:border-gray-700 overflow-hidden" style="height: 380px;">
+  <img src="/img/flagsmith-ui.png" class="h-full w-full object-contain" alt="Flagsmith dashboard — v2_enabled flag with targeting"/>
 </div>
 
 <div class="text-xs opacity-60 mt-4">
