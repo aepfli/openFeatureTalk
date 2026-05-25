@@ -921,6 +921,16 @@ boolean on = client.getBooleanValue("v2_enabled", false);
   <a href="https://flagd.dev" target="_blank">flagd.dev</a>
 </div>
 
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://flagd.dev" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>flagd — cloud-native reference</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">flagd.dev</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://flagd.dev" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
 ---
 layout: default
 transition: fade
@@ -1763,7 +1773,7 @@ layout: default
 </a>
 
 <a href="https://www.flagsmith.com" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
-  <img src="/img/logos/flagsmith.svg" class="h-7 object-contain shrink-0 mt-2 dark:invert" alt="Flagsmith"/>
+  <img src="/img/logos/flagsmith-mark.svg" class="h-9 object-contain shrink-0 mt-1 dark:invert" alt="Flagsmith"/>
   <div>
     <div class="font-bold">Flagsmith</div>
     <div class="text-sm opacity-70 mt-1">Open-source, self-hosted flag management — UI, segments, OpenFeature + OFREP support.</div>
