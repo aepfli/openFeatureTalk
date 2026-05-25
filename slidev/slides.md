@@ -1743,6 +1743,56 @@ layout: default
 </div>
 
 ---
+layout: default
+---
+
+# Community Challenge — Blind By Design
+
+<div class="text-sm opacity-70 -mt-2 mb-5">The lab report is almost in. 👀 This is your <strong>last chance</strong> to complete the full Open Ecosystem adventure across all three levels.</div>
+
+<div class="grid grid-cols-3 gap-4 mb-5">
+  <div class="p-4 rounded-lg border border-gray-200 shadow-sm">
+    <div class="text-2xl">🔬</div>
+    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Level 1 — Beginner</div>
+    <div class="font-bold mt-1">Stand up the lab</div>
+    <div class="text-xs opacity-70 mt-1">Hard-coded defaults.</div>
+  </div>
+  <div class="p-4 rounded-lg border border-gray-200 shadow-sm">
+    <div class="text-2xl">🧪</div>
+    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Level 2 — Intermediate</div>
+    <div class="font-bold mt-1">Outcome by cohort</div>
+    <div class="text-xs opacity-70 mt-1">Context-aware outcomes.</div>
+  </div>
+  <div class="p-4 rounded-lg border border-gray-200 shadow-sm">
+    <div class="text-2xl">🎯</div>
+    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Level 3 — Expert</div>
+    <div class="font-bold mt-1">Precision under pressure</div>
+    <div class="text-xs opacity-70 mt-1">When it really counts.</div>
+  </div>
+</div>
+
+<div class="text-sm opacity-80 italic mb-4">
+  Systems can look like they're working… while quietly making the wrong call. Before the lab closes, finish the adventure and make your final request count.
+</div>
+
+<div class="flex items-center gap-3 text-sm">
+  <carbon:trophy class="text-yellow-500"/>
+  <span><strong>🥇 1st place:</strong> 50% Linux Foundation certification voucher</span>
+  <span class="opacity-40">·</span>
+  <span><strong>🏅 Top 3:</strong> Credly badges</span>
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://dynatrace-oss.github.io/open-ecosystem-challenges/04-blind-by-design/" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div><carbon:game-console class="inline"/> One last chance to turn the lights on</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">dynatrace-oss.github.io/open-ecosystem-challenges</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://dynatrace-oss.github.io/open-ecosystem-challenges/04-blind-by-design/" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
 layout: end
 ---
 
@@ -1781,16 +1831,6 @@ layout: end
 
 <div class="mt-2 text-xs opacity-60 font-mono">
   <carbon:logo-github class="inline align-middle"/> github.com/aepfli/openFeatureTalk
-</div>
-
-<div class="abs-bl m-6 flex items-end gap-2">
-  <div class="bg-white p-1 rounded dark:invert">
-    <QRCode data="https://community.open-ecosystem.com/invites/uG1vNeughb" :width="90" :height="90" :margin="2" />
-  </div>
-  <a href="https://community.open-ecosystem.com/invites/uG1vNeughb" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-left leading-tight pb-1 !text-inherit">
-    <div><carbon:game-console class="inline"/> Try the community challenge</div>
-    <div class="font-mono text-[10px] opacity-80 mt-0.5">community.open-ecosystem.com</div>
-  </a>
 </div>
 
 <div class="abs-br m-6 flex items-end gap-2">
