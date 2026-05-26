@@ -259,6 +259,7 @@ Those use-cases aren't all the same kind of flag — they differ in **longevity*
 
 ---
 layout: two-cols
+transition: fade
 ---
 
 # Feature Flagging Maturity
@@ -278,6 +279,7 @@ layout: two-cols
 
 ---
 layout: two-cols
+transition: fade
 ---
 
 # Feature Flagging Maturity
@@ -297,6 +299,7 @@ layout: two-cols
 
 ---
 layout: two-cols
+transition: fade
 ---
 
 # Feature Flagging Maturity
@@ -316,6 +319,7 @@ layout: two-cols
 
 ---
 layout: two-cols
+transition: fade
 ---
 
 # Feature Flagging Maturity
@@ -335,6 +339,7 @@ layout: two-cols
 
 ---
 layout: two-cols
+transition: fade
 ---
 
 # Feature Flagging Maturity
