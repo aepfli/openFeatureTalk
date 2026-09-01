@@ -3,7 +3,7 @@ theme: seriph
 title: "Fun with Flags: How OpenFeature Solves Your Feature Flag Headaches"
 info: |
   Fun with Flags: How OpenFeature Solves Your Feature Flag Headaches.
-  Simon Schrottner — OpenFeature maintainer, CNCF Ambassador.
+  Simon Schrottner — OpenFeature maintainer & TSC member, CNCF & AAIF Ambassador.
 author: Simon Schrottner
 highlighter: shiki
 lineNumbers: false
@@ -24,7 +24,7 @@ layout: section
 ## How OpenFeature Solves Your Feature Flag Headaches
 
 <div class="pt-8 opacity-90 text-sm space-y-1">
-  <div>Simon Schrottner · OpenFeature maintainer · CNCF Ambassador</div>
+  <div>Simon Schrottner · OpenFeature maintainer & TSC member · CNCF & AAIF Ambassador</div>
   <div><carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp;
        <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a> &nbsp;·&nbsp;
        <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
@@ -89,7 +89,7 @@ layout: intro
 ## How OpenFeature Solves Your Feature Flag Headaches
 
 <div class="pt-8 opacity-90 text-sm space-y-1">
-  <div>Simon Schrottner · OpenFeature maintainer · CNCF Ambassador</div>
+  <div>Simon Schrottner · OpenFeature maintainer & TSC member · CNCF & AAIF Ambassador</div>
   <div><carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp;
        <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a> &nbsp;·&nbsp;
        <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
@@ -108,7 +108,7 @@ image: /img/simon.jpg
 <div class="grid grid-cols-2 gap-4 mt-6">
   <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
     <img src="/img/openfeature-horizontal-black.svg" class="h-14 object-contain dark:invert" />
-    <div class="text-sm mt-3">OpenFeature Maintainer</div>
+    <div class="text-sm mt-3">OpenFeature Maintainer & TSC Member</div>
   </div>
   <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
     <div class="dark:bg-white dark:p-2 dark:rounded">
@@ -116,15 +116,46 @@ image: /img/simon.jpg
     </div>
     <div class="text-sm mt-3">CNCF Ambassador</div>
   </div>
+  <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
+    <div class="dark:bg-white dark:p-2 dark:rounded">
+      <img src="/img/logos/aaif_ambassador.png" class="h-14 object-contain" alt="AAIF Ambassador" />
+    </div>
+    <div class="text-sm mt-3">AAIF Ambassador</div>
+  </div>
+  <div class="rounded border border-gray-200 p-4 text-center flex flex-col items-center justify-between">
+    <img src="/img/logos/flagsmith.svg" class="h-14 object-contain dark:invert" alt="Flagsmith" />
+    <div class="text-sm mt-3">Fractional Developer Advocate</div>
+  </div>
 </div>
-
-<div class="pt-4 text-sm opacity-70">Open Source enthusiast</div>
 
 <div class="pt-6 text-xs opacity-70 space-y-1">
   <div><carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp; <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a></div>
   <div><carbon:logo-github class="inline"/> aepfli &nbsp; <carbon:logo-linkedin class="inline"/> in/aepfli</div>
   <div>🦋 @aepfli.bsky.social</div>
 </div>
+
+---
+layout: center
+class: text-center
+---
+
+# A quick thank-you
+
+<div class="flex justify-center my-10">
+  <img src="/img/logos/flagsmith-wordmark-purple.png" class="h-32 object-contain" alt="Flagsmith"/>
+</div>
+
+<div class="text-xl max-w-2xl mx-auto">
+  Currently funding my open-source work and making talks like this possible.
+</div>
+
+<style>
+.slidev-layout {
+  background-color: #FBF4D5;
+  color: #241a3d;
+}
+.slidev-layout h1 { color: #241a3d; }
+</style>
 
 ---
 layout: default
@@ -1808,54 +1839,27 @@ layout: default
 </div>
 
 ---
-layout: default
+layout: center
+class: text-center
 ---
 
-# Community Challenge — Blind By Design
+# Let's keep talking
 
-<div class="text-sm opacity-70 -mt-2 mb-5">The lab report is almost in. 👀 This is your <strong>last chance</strong> to complete the full Open Ecosystem adventure across all three levels.</div>
-
-<div class="grid grid-cols-3 gap-4 mb-5">
-  <div class="p-4 rounded-lg border border-gray-200 shadow-sm">
-    <div class="text-2xl">🔬</div>
-    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Level 1 — Beginner</div>
-    <div class="font-bold mt-1">Stand up the lab</div>
-    <div class="text-xs opacity-70 mt-1">Hard-coded defaults.</div>
-  </div>
-  <div class="p-4 rounded-lg border border-gray-200 shadow-sm">
-    <div class="text-2xl">🧪</div>
-    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Level 2 — Intermediate</div>
-    <div class="font-bold mt-1">Outcome by cohort</div>
-    <div class="text-xs opacity-70 mt-1">Context-aware outcomes.</div>
-  </div>
-  <div class="p-4 rounded-lg border border-gray-200 shadow-sm">
-    <div class="text-2xl">🎯</div>
-    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Level 3 — Expert</div>
-    <div class="font-bold mt-1">Precision under pressure</div>
-    <div class="text-xs opacity-70 mt-1">When it really counts.</div>
-  </div>
+<div class="flex justify-center my-10">
+  <img src="/img/logos/flagsmith-wordmark-purple.png" class="h-32 object-contain" alt="Flagsmith"/>
 </div>
 
-<div class="text-sm opacity-80 italic mb-4">
-  Systems can look like they're working… while quietly making the wrong call. Before the lab closes, finish the adventure and make your final request count.
+<div class="text-xl max-w-2xl mx-auto">
+  Come by the booth.
 </div>
 
-<div class="flex items-center gap-3 text-sm">
-  <carbon:trophy class="text-yellow-500"/>
-  <span><strong>🥇 1st place:</strong> 50% Linux Foundation certification voucher</span>
-  <span class="opacity-40">·</span>
-  <span><strong>🏅 Top 3:</strong> Credly badges</span>
-</div>
-
-<div class="abs-br m-6 flex items-end gap-2">
-  <a href="https://dynatrace-oss.github.io/open-ecosystem-challenges/04-blind-by-design/" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
-    <div><carbon:game-console class="inline"/> One last chance to turn the lights on</div>
-    <div class="font-mono text-[10px] opacity-80 mt-0.5">dynatrace-oss.github.io/open-ecosystem-challenges</div>
-  </a>
-  <div class="bg-white p-1 rounded dark:invert">
-    <QRCode data="https://dynatrace-oss.github.io/open-ecosystem-challenges/04-blind-by-design/" :width="90" :height="90" :margin="2" />
-  </div>
-</div>
+<style>
+.slidev-layout {
+  background-color: #FBF4D5;
+  color: #241a3d;
+}
+.slidev-layout h1 { color: #241a3d; }
+</style>
 
 ---
 layout: end
