@@ -1205,7 +1205,7 @@ client.getBooleanValue("c", false, ctx);  // ... on every call
 
 <div class="text-sm opacity-70 -mt-2 mb-4">Set the context where the data actually lives — global, per-request, per-client, or per-call.</div>
 
-```java {1-3|5-7|9-12|14}
+```java {1-3|5-7|9-12|14-15}
 // global — applies to every evaluation
 OpenFeatureAPI.getInstance().setEvaluationContext(
     new MutableContext().add("region", "eu"));
@@ -1781,7 +1781,7 @@ layout: default
   <img src="/img/logos/flagsmith-mark.svg" class="h-9 object-contain shrink-0 mt-1 dark:invert" alt="Flagsmith"/>
   <div>
     <div class="font-bold">Flagsmith</div>
-    <div class="text-sm opacity-70 mt-1">Open-source, self-hosted flag management — UI, segments, OpenFeature + OFREP support.</div>
+    <div class="text-sm opacity-70 mt-1">Open-source, self-hosted flag management — UI, segments, OpenFeature support.</div>
     <div class="font-mono text-[10px] opacity-60 mt-1">flagsmith.com</div>
   </div>
 </a>
