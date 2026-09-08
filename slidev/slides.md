@@ -1894,19 +1894,19 @@ layout: center
 class: text-center
 ---
 
-# Left of the loop
+# Left of the Loop
 
 <div class="text-xl max-w-2xl mx-auto mt-6">
-  Got feedback, ideas, or things you'd build differently?
+  When AI writes the code, shared understanding becomes the scarce resource.
 </div>
 
 <div class="text-base opacity-70 max-w-2xl mx-auto mt-4">
-  Tell me what landed — and what didn't.
+  A book I'm writing on AI-assisted development. Free draft to read — feedback and ideas welcome.
 </div>
 
 <div class="abs-br m-6 flex items-end gap-2">
   <a href="https://leftoftheloop.dev" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
-    <div>Feedback &amp; ideas</div>
+    <div>Read the draft &amp; share feedback</div>
     <div class="font-mono text-[10px] opacity-80 mt-0.5">leftoftheloop.dev</div>
   </a>
   <div class="bg-white p-1 rounded dark:invert">
