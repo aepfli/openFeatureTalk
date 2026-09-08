@@ -991,7 +991,7 @@ boolean on = client.getBooleanValue("v2_enabled", false);
 
 <div class="text-xs opacity-60 mt-2">
   FlagsmithProvider — open-source platform, self-host or cloud —
-  <a href="https://www.flagsmith.com" target="_blank">flagsmith.com</a>
+  <a href="https://github.com/Flagsmith/flagsmith" target="_blank">github.com/Flagsmith/flagsmith</a>
 </div>
 <div class="text-xs opacity-60 mt-2">
   <carbon:document class="inline-block align-middle" /> ~130 providers in the ecosystem —
@@ -999,12 +999,12 @@ boolean on = client.getBooleanValue("v2_enabled", false);
 </div>
 
 <div class="abs-br m-6 flex items-end gap-2">
-  <a href="https://www.flagsmith.com" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+  <a href="https://github.com/Flagsmith/flagsmith" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
     <div>Flagsmith</div>
-    <div class="font-mono text-[10px] opacity-80 mt-0.5">flagsmith.com</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">github.com/Flagsmith/flagsmith</div>
   </a>
   <div class="bg-white p-1 rounded dark:invert">
-    <QRCode data="https://www.flagsmith.com" :width="90" :height="90" :margin="2" />
+    <QRCode data="https://github.com/Flagsmith/flagsmith" :width="90" :height="90" :margin="2" />
   </div>
 </div>
 
@@ -1808,12 +1808,12 @@ layout: default
   </div>
 </a>
 
-<a href="https://www.flagsmith.com" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
+<a href="https://github.com/Flagsmith/flagsmith" target="_blank" class="p-5 rounded-lg border border-gray-200 shadow-sm flex items-start gap-4 hover:border-gray-400 !text-inherit !no-underline">
   <img src="/img/logos/flagsmith-mark.svg" class="h-9 object-contain shrink-0 mt-1 dark:invert" alt="Flagsmith"/>
   <div>
     <div class="font-bold">Flagsmith</div>
     <div class="text-sm opacity-70 mt-1">Open-source, self-hosted flag management — UI, segments, OpenFeature support.</div>
-    <div class="font-mono text-[10px] opacity-60 mt-1">flagsmith.com</div>
+    <div class="font-mono text-[10px] opacity-60 mt-1">github.com/Flagsmith/flagsmith</div>
   </div>
 </a>
 
@@ -1837,29 +1837,6 @@ layout: default
     <QRCode data="https://openfeature.dev" :width="90" :height="90" :margin="2" />
   </div>
 </div>
-
----
-layout: center
-class: text-center
----
-
-# Let's keep talking
-
-<div class="flex justify-center my-10">
-  <img src="/img/logos/flagsmith-wordmark-purple.png" class="h-32 object-contain" alt="Flagsmith"/>
-</div>
-
-<div class="text-xl max-w-2xl mx-auto">
-  Come by the booth.
-</div>
-
-<style>
-.slidev-layout {
-  background-color: #FBF4D5;
-  color: #241a3d;
-}
-.slidev-layout h1 { color: #241a3d; }
-</style>
 
 ---
 layout: end
@@ -1909,6 +1886,31 @@ layout: end
   </a>
   <div class="bg-white p-1 rounded dark:invert">
     <QRCode data="https://schrottner.at/openFeatureTalk/" :width="90" :height="90" :margin="2" />
+  </div>
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# Left of the loop
+
+<div class="text-xl max-w-2xl mx-auto mt-6">
+  Got feedback, ideas, or things you'd build differently?
+</div>
+
+<div class="text-base opacity-70 max-w-2xl mx-auto mt-4">
+  Tell me what landed — and what didn't.
+</div>
+
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://leftoftheloop.dev" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Feedback &amp; ideas</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">leftoftheloop.dev</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://leftoftheloop.dev" :width="90" :height="90" :margin="2" />
   </div>
 </div>
 
