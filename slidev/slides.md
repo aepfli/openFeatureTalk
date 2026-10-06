@@ -216,7 +216,9 @@ layout: section
 layout: statement
 ---
 
-Feature flags <span v-mark.highlight.yellow="1">enable, disable, or change behavior</span> of features in a product or service <span v-mark.highlight.yellow="2">at runtime</span> — <span v-mark.highlight.yellow="3">without modifying the source code</span>.
+Feature flags <span v-mark.highlight.yellow="1">enable, disable, or change behavior</span> of features in a product or service <span v-mark.highlight.yellow="2">at runtime</span>.
+
+<div v-click="3">— <span v-mark.highlight.yellow="3">without modifying the source code or a restart</span>.</div>
 
 ---
 layout: default
