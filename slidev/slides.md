@@ -258,6 +258,30 @@ layout: default
 layout: default
 ---
 
+# Ship Continuously
+
+<div class="grid grid-cols-3 gap-6 mt-8 items-stretch">
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:branch class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Trunk-based development</div>
+    <div class="text-sm opacity-70">merge unfinished work to main behind a flag — no long-lived feature branches</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:merge class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Small, frequent merges</div>
+    <div class="text-sm opacity-70">no merge hell; continuous integration that's actually continuous</div>
+  </div>
+  <div class="rounded-lg border border-gray-200 shadow-sm p-6 text-center flex flex-col items-center gap-3 h-full">
+    <carbon:user-avatar class="text-5xl opacity-70"/>
+    <div class="font-bold text-lg">Test in production</div>
+    <div class="text-sm opacity-70">turn it on for yourself or your team on the real system before anyone else</div>
+  </div>
+</div>
+
+---
+layout: default
+---
+
 # Reduce Risk
 
 <div class="grid grid-cols-3 gap-6 mt-8 items-stretch">
