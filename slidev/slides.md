@@ -1887,12 +1887,12 @@ layout: end
 </div>
 
 <div class="abs-br m-6 flex items-end gap-2">
-  <a href="https://schrottner.at/openFeatureTalk/" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
-    <div>Slides — grab them now</div>
-    <div class="font-mono text-[10px] opacity-80 mt-0.5">schrottner.at/openFeatureTalk</div>
+  <a href="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Feedback — rate this talk</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">m.devoxx.com · Devoxx BE</div>
   </a>
   <div class="bg-white p-1 rounded dark:invert">
-    <QRCode data="https://schrottner.at/openFeatureTalk/" :width="90" :height="90" :margin="2" />
+    <QRCode data="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" :width="110" :height="110" :margin="2" />
   </div>
 </div>
 
