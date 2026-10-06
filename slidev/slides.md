@@ -65,8 +65,8 @@ layout: default
 - Lost **half a billion USD**
 - ... in **one hour**
 - ... due to a **feature flag**
-- ... only deployed to **7 of 8 servers**
 - ... they **repurposed**
+- ... only deployed to **7 of 8 servers**
 
 </v-clicks>
 
