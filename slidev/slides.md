@@ -1289,6 +1289,11 @@ flowchart LR
 </div>
 
 ---
+layout: image
+image: /img/breaks/stone-alley.jpg
+---
+
+---
 layout: default
 ---
 
