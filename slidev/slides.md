@@ -1446,8 +1446,12 @@ layout: statement
 
 # When is it safe to remove a flag?
 
-<div class="text-xl opacity-70 mt-8">
-  We have to <b>observe</b> flag evaluations.
+<div v-click="1" class="text-xl opacity-70 mt-8">
+  We don't know either.
+</div>
+
+<div v-click="2" class="text-xl opacity-70 mt-2">
+  But we can provide <b v-mark.highlight.yellow="3">data</b>.
 </div>
 
 ---
