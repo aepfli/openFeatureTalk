@@ -65,8 +65,8 @@ layout: default
 - Lost **half a billion USD**
 - ... in **one hour**
 - ... due to a **feature flag**
-- ... only deployed to **7 of 8 servers**
 - ... they **repurposed**
+- ... only deployed to **7 of 8 servers**
 
 </v-clicks>
 
@@ -216,7 +216,9 @@ layout: section
 layout: statement
 ---
 
-Feature flags <span v-mark.highlight.yellow="1">enable, disable, or change behavior</span> of features in a product or service <span v-mark.highlight.yellow="2">at runtime</span> — <span v-mark.highlight.yellow="3">without modifying the source code</span>.
+Feature flags <span v-mark.highlight.yellow="1">enable, disable, or change behavior</span> of features in a product or service <span v-mark.highlight.yellow="2">at runtime</span>.
+
+<div v-click="3">— <span v-mark.highlight.yellow="3">without modifying the source code or a restart</span>.</div>
 
 ---
 layout: default
@@ -1285,6 +1287,11 @@ flowchart LR
     <QRCode data="https://openfeature.dev/specification/sections/evaluation-context#requirement-323" :width="90" :height="90" :margin="2" />
   </div>
 </div>
+
+---
+layout: image
+image: /img/breaks/stone-alley.jpg
+---
 
 ---
 layout: default
