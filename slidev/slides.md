@@ -31,6 +31,16 @@ layout: section
        <carbon:logo-linkedin class="inline"/> in/aepfli</div>
 </div>
 
+<div class="abs-br m-6 flex items-end gap-2">
+  <a href="https://schrottner.at/openFeatureTalk/" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
+    <div>Slides — grab them now</div>
+    <div class="font-mono text-[10px] opacity-80 mt-0.5">schrottner.at/openFeatureTalk</div>
+  </a>
+  <div class="bg-white p-1 rounded dark:invert">
+    <QRCode data="https://schrottner.at/openFeatureTalk/" :width="100" :height="100" :margin="2" />
+  </div>
+</div>
+
 <!--
   Narrative rhythm (do not break):
     Hook (Knight Capital) → Who I am → What are FFs → OpenFeature intro
@@ -1851,49 +1861,49 @@ layout: end
 
 # Thanks — Q&A
 
-<div class="grid grid-cols-3 gap-6 mt-8 max-w-4xl mx-auto">
-  <div class="text-center">
-    <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
-    <div class="text-lg font-bold mt-1">Vendor lock-in</div>
-    <div class="text-xs opacity-60 mt-3">→</div>
-    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Concept</div>
-    <div class="text-base">Providers</div>
+<div class="flex items-center justify-center gap-12 mt-6">
+  <div class="flex-1 max-w-xl tracking-normal">
+    <div class="grid grid-cols-3 gap-4">
+      <div class="text-center">
+        <div class="text-[10px] uppercase tracking-wider opacity-60">Problem</div>
+        <div class="text-base font-bold mt-1 leading-tight">Vendor lock-in</div>
+        <div class="text-xs opacity-60 mt-2">→</div>
+        <div class="text-[10px] uppercase tracking-wider opacity-60 mt-1">Concept</div>
+        <div class="text-sm">Providers</div>
+      </div>
+      <div class="text-center">
+        <div class="text-[10px] uppercase tracking-wider opacity-60">Problem</div>
+        <div class="text-base font-bold mt-1 leading-tight">Dynamic evaluation</div>
+        <div class="text-xs opacity-60 mt-2">→</div>
+        <div class="text-[10px] uppercase tracking-wider opacity-60 mt-1">Concept</div>
+        <div class="text-sm">Evaluation Context</div>
+      </div>
+      <div class="text-center">
+        <div class="text-[10px] uppercase tracking-wider opacity-60">Problem</div>
+        <div class="text-base font-bold mt-1 leading-tight">Obsolete flags</div>
+        <div class="text-xs opacity-60 mt-2">→</div>
+        <div class="text-[10px] uppercase tracking-wider opacity-60 mt-1">Concept</div>
+        <div class="text-sm">Hooks</div>
+      </div>
+    </div>
+    <div class="mt-10 text-sm opacity-80 tracking-normal leading-relaxed">
+      <carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp;
+      <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a><br/>
+      <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
+      <carbon:logo-linkedin class="inline"/> in/aepfli
+    </div>
+    <div class="mt-3 text-xs opacity-60 font-mono tracking-normal">
+      <carbon:presentation-file class="inline align-middle"/> <a href="https://schrottner.at/openFeatureTalk/" target="_blank">schrottner.at/openFeatureTalk</a>
+    </div>
   </div>
-  <div class="text-center">
-    <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
-    <div class="text-lg font-bold mt-1">Dynamic evaluation</div>
-    <div class="text-xs opacity-60 mt-3">→</div>
-    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Concept</div>
-    <div class="text-base">Evaluation Context</div>
-  </div>
-  <div class="text-center">
-    <div class="text-xs uppercase tracking-wider opacity-60">Problem</div>
-    <div class="text-lg font-bold mt-1">Obsolete flags</div>
-    <div class="text-xs opacity-60 mt-3">→</div>
-    <div class="text-xs uppercase tracking-wider opacity-60 mt-2">Concept</div>
-    <div class="text-base">Hooks</div>
-  </div>
-</div>
-
-<div class="mt-10 text-sm opacity-80">
-  <carbon:email class="inline"/> simon@schrottner.at &nbsp;·&nbsp;
-  <carbon:link class="inline"/> <a href="https://schrottner.at" target="_blank">schrottner.at</a> &nbsp;·&nbsp;
-  <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
-  <carbon:logo-linkedin class="inline"/> in/aepfli
-</div>
-
-<div class="mt-2 text-xs opacity-60 font-mono">
-  <carbon:logo-github class="inline align-middle"/> github.com/aepfli/openFeatureTalk
-</div>
-
-<div class="abs-br m-6 flex items-end gap-2">
-  <a href="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" target="_blank" class="text-xs opacity-60 hover:opacity-100 text-right leading-tight pb-1 !text-inherit">
-    <div>Feedback — rate this talk</div>
-    <div class="font-mono text-[10px] opacity-80 mt-0.5">m.devoxx.com · Devoxx BE</div>
+  <a href="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" target="_blank" class="flex flex-col items-center gap-2 !text-inherit !border-0 tracking-normal">
+    <div class="text-lg font-bold uppercase tracking-wider">Rate this talk</div>
+    <!-- no dark:invert: layout:end is always black, keep a standard dark-on-white code for every phone scanner -->
+    <div class="bg-white p-2 rounded-lg">
+      <QRCode data="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" :width="280" :height="280" :margin="2" />
+    </div>
+    <div class="font-mono text-xs opacity-70">m.devoxx.com · Devoxx BE</div>
   </a>
-  <div class="bg-white p-1 rounded dark:invert">
-    <QRCode data="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" :width="110" :height="110" :margin="2" />
-  </div>
 </div>
 
 ---
