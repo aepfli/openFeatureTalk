@@ -1920,18 +1920,24 @@ layout: end
       <carbon:logo-github class="inline"/> aepfli &nbsp;·&nbsp;
       <carbon:logo-linkedin class="inline"/> in/aepfli
     </div>
-    <div class="mt-3 text-xs opacity-60 font-mono tracking-normal">
-      <carbon:presentation-file class="inline align-middle"/> <a href="https://schrottner.at/openFeatureTalk/" target="_blank">schrottner.at/openFeatureTalk</a>
-    </div>
   </div>
-  <a href="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" target="_blank" class="flex flex-col items-center gap-2 !text-inherit !border-0 tracking-normal">
-    <div class="text-lg font-bold uppercase tracking-wider">Rate this talk</div>
-    <!-- no dark:invert: layout:end is always black, keep a standard dark-on-white code for every phone scanner -->
-    <div class="bg-white p-2 rounded-lg">
-      <QRCode data="https://m.devoxx.com/events/dvbe26/talks/22923/fun-with-flags-how-openfeature-solves-your-feature-flag-headaches" :width="280" :height="280" :margin="2" />
-    </div>
-    <div class="font-mono text-xs opacity-70">m.devoxx.com · Devoxx BE</div>
-  </a>
+  <div class="flex items-start gap-6 tracking-normal">
+    <a href="https://eu1.hubs.ly/H0zPDdp0" target="_blank" class="flex flex-col items-center gap-2 !text-inherit !border-0">
+      <div class="text-lg font-bold uppercase tracking-wider">Feedback</div>
+      <!-- no dark:invert: layout:end is always black, keep a standard dark-on-white code for every phone scanner -->
+      <div class="bg-white p-2 rounded-lg">
+        <QRCode data="https://eu1.hubs.ly/H0zPDdp0" :width="160" :height="160" :margin="2" />
+      </div>
+      <div class="font-mono text-xs opacity-70">eu1.hubs.ly/H0zPDdp0</div>
+    </a>
+    <a href="https://schrottner.at/openFeatureTalk/" target="_blank" class="flex flex-col items-center gap-2 !text-inherit !border-0">
+      <div class="text-lg font-bold uppercase tracking-wider">Slides</div>
+      <div class="bg-white p-2 rounded-lg">
+        <QRCode data="https://schrottner.at/openFeatureTalk/" :width="160" :height="160" :margin="2" />
+      </div>
+      <div class="font-mono text-xs opacity-70">schrottner.at/openFeatureTalk</div>
+    </a>
+  </div>
 </div>
 
 ---
