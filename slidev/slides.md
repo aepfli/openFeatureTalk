@@ -1923,7 +1923,7 @@ layout: end
   </div>
   <div class="flex items-start gap-6 tracking-normal">
     <a href="https://eu1.hubs.ly/H0zPDdp0" target="_blank" class="flex flex-col items-center gap-2 !text-inherit !border-0">
-      <div class="text-lg font-bold uppercase tracking-wider">Feedback</div>
+      <div class="text-lg font-bold uppercase tracking-wider">Get in touch</div>
       <!-- no dark:invert: layout:end is always black, keep a standard dark-on-white code for every phone scanner -->
       <div class="bg-white p-2 rounded-lg">
         <QRCode data="https://eu1.hubs.ly/H0zPDdp0" :width="160" :height="160" :margin="2" />
